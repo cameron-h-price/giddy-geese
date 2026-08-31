@@ -393,6 +393,12 @@ a.lineup-tag:hover {
   gap: var(--grid-gap);
 }
 
+/* .feature-card isn't a flex container (unlike the event hero/card, where
+   gap already handles this), so its .calendar-btn needs its own spacing. */
+.feature-card .calendar-btn {
+  margin-top: 0.75rem;
+}
+
 /* Hero card (next event) */
 
 .event-hero {
