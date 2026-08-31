@@ -76,4 +76,9 @@
   --icon-size:       2rem;
   --icon-gap:        1.25rem;
 
+  /* --- Events --- */
+  --poster-aspect-ratio: 3 / 4;
+  --event-hero-gap:      2.5rem;
+  --event-hero-poster-width: 340px;
+
 }

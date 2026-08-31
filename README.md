@@ -69,6 +69,38 @@ Leave a platform out of the `socials` object entirely (or set it to `""`) to hid
 
 ---
 
+## Adding an event
+
+Edit `data/events.json`. Add an entry to the `events` array:
+
+```json
+{
+  "name": "Event Name",
+  "poster": "assets/images/events/filename.jpg",
+  "date": "2026-09-19",
+  "time": "22:00",
+  "location": "Venue, City",
+  "description": "One or two sentence description.",
+  "lineup": ["CmunSelecta", "Silly Goose", "Guest DJ"]
+}
+```
+
+The **Upcoming Events** page (`events.html`) sorts these automatically — no manual ordering needed:
+
+- The soonest event with a date/time in the future is shown as the large hero card.
+- Any other future events appear below it as smaller cards, in date order.
+- Anything with a date/time in the past automatically drops into the "Past Events" section instead.
+
+### Poster
+
+Drop the image in `assets/images/events/` and set `poster` to `"assets/images/events/filename.jpg"`. If omitted or missing, a placeholder is shown.
+
+### Lineup
+
+Each name in `lineup` is checked (case-insensitively) against the `name` field in `data/djs.json`. A match becomes a link to that member's card on the Our DJs page; anything that doesn't match (e.g. a guest not in the collective) is shown as plain text. So a collective member's name should be spelled exactly as it appears in `djs.json` to get the link.
+
+---
+
 ## Visual / style changes
 
 All design tokens live in **`config/theme.css`**. Nothing is hardcoded anywhere else.

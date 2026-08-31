@@ -1,0 +1,31 @@
+{
+  "events": [
+    {
+      "name": "EXAMPLE — Autumn Warehouse Session",
+      "poster": "assets/images/events/example-autumn-warehouse.jpg",
+      "date": "2026-09-19",
+      "time": "22:00",
+      "location": "The Old Mill, Manchester",
+      "description": "Placeholder event — replace with a real one. All-night set from the collective plus a guest.",
+      "lineup": ["CmunSelecta", "Silly Goose", "DJ Guest"]
+    },
+    {
+      "name": "EXAMPLE — Riverside Day Party",
+      "poster": "assets/images/events/example-riverside-day.jpg",
+      "date": "2026-10-03",
+      "time": "14:00",
+      "location": "Riverside Gardens, Leeds",
+      "description": "Placeholder event — replace with a real one. Daytime outdoor set.",
+      "lineup": ["Silly Goose", "DJ Three"]
+    },
+    {
+      "name": "EXAMPLE — Spring Launch Night",
+      "poster": "assets/images/events/example-spring-launch.jpg",
+      "date": "2026-07-12",
+      "time": "21:00",
+      "location": "The Vault, Leeds",
+      "description": "Placeholder past event — replace with a real one. First collective outing under the GiddyGeese name.",
+      "lineup": ["CmunSelecta", "Silly Goose", "DJ Three"]
+    }
+  ]
+}

@@ -36,6 +36,7 @@ function resolveImage(member) {
 function buildCard(member) {
   const card = document.createElement('article');
   card.className = 'dj-card';
+  card.id = member.id;
 
   // Avatar
   const img = document.createElement('img');
