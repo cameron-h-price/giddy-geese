@@ -37,15 +37,24 @@ function buildLineup(names, lookup) {
   return wrap;
 }
 
-function buildMetaItem(icon, text) {
-  const span = document.createElement('span');
+function buildMetaItem(icon, text, href) {
+  const el = document.createElement(href ? 'a' : 'span');
+  if (href) {
+    el.href = href;
+    el.target = '_blank';
+    el.rel = 'noopener noreferrer';
+  }
 
   const i = document.createElement('i');
   i.className = icon;
-  span.appendChild(i);
+  el.appendChild(i);
 
-  span.appendChild(document.createTextNode(` ${text}`));
-  return span;
+  el.appendChild(document.createTextNode(` ${text}`));
+  return el;
+}
+
+function googleMapsUrl(location) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
 }
 
 function buildMeta(event) {
@@ -53,8 +62,40 @@ function buildMeta(event) {
   meta.className = 'event-meta';
   meta.appendChild(buildMetaItem('fa-solid fa-calendar', formatDate(event._when)));
   meta.appendChild(buildMetaItem('fa-solid fa-clock', event.time));
-  meta.appendChild(buildMetaItem('fa-solid fa-location-dot', event.location));
+  meta.appendChild(buildMetaItem('fa-solid fa-location-dot', event.location, googleMapsUrl(event.location)));
   return meta;
+}
+
+function toGCalDateString(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+}
+
+function googleCalendarUrl(event) {
+  const start = event._when;
+  const durationHours = event.duration ?? 6; // hours — optional per-event override, defaults to 6
+  const end = new Date(start.getTime() + durationHours * 60 * 60 * 1000);
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: event.name,
+    dates: `${toGCalDateString(start)}/${toGCalDateString(end)}`,
+    details: event.description ?? '',
+    location: event.location ?? '',
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function buildCalendarButton(event) {
+  const btn = document.createElement('a');
+  btn.className = 'calendar-btn';
+  btn.href = googleCalendarUrl(event);
+  btn.target = '_blank';
+  btn.rel = 'noopener noreferrer';
+
+  const i = document.createElement('i');
+  i.className = 'fa-solid fa-calendar-plus';
+  btn.appendChild(i);
+  btn.appendChild(document.createTextNode(' Add to Calendar'));
+  return btn;
 }
 
 function buildHero(event, lookup) {
@@ -91,6 +132,7 @@ function buildHero(event, lookup) {
   }
 
   info.appendChild(buildLineup(event.lineup, lookup));
+  info.appendChild(buildCalendarButton(event));
 
   hero.appendChild(info);
   return hero;
@@ -117,6 +159,7 @@ function buildCard(event, lookup, { past = false } = {}) {
 
   body.appendChild(buildMeta(event));
   body.appendChild(buildLineup(event.lineup, lookup));
+  body.appendChild(buildCalendarButton(event));
 
   card.appendChild(body);
   return card;

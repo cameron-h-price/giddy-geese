@@ -79,11 +79,14 @@ Edit `data/events.json`. Add an entry to the `events` array:
   "poster": "assets/images/events/filename.jpg",
   "date": "2026-09-19",
   "time": "22:00",
+  "duration": 6,
   "location": "Venue, City",
   "description": "One or two sentence description.",
   "lineup": ["CmunSelecta", "Silly Goose", "Guest DJ"]
 }
 ```
+
+`duration` (hours, optional) sets how long the "Add to Calendar" button's event block is — defaults to `6` if omitted. Decimals are fine (e.g. `2.5`).
 
 The **Upcoming Events** page (`events.html`) sorts these automatically — no manual ordering needed:
 

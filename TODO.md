@@ -1,3 +1,0 @@
-- Fix more upcoming events to make cards smaller and display all of them
-- add google maps link to each event and make that work by clicking on the location name
-- add to calendar button for events
