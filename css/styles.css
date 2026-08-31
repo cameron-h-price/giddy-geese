@@ -19,6 +19,59 @@ body {
   min-height: 100vh;
 }
 
+/* ─── Nav ─────────────────────────────────────────────────── */
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--nav-gap);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--nav-padding-y) var(--page-padding-x);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: var(--text-name-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.nav-logo {
+  width: var(--nav-logo-size);
+  height: var(--nav-logo-size);
+  border-radius: var(--card-radius);
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nav-gap);
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--text-nav-size);
+  transition: color 0.18s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
 /* ─── Header ─────────────────────────────────────────────── */
 
 .site-header {
@@ -41,6 +94,15 @@ body {
   font-size: var(--text-tagline-size);
 }
 
+.page-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-heading-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
 /* ─── Main grid ───────────────────────────────────────────── */
 
 main {
@@ -51,7 +113,7 @@ main {
 
 .dj-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-col), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-col), 1fr));
   gap: var(--grid-gap);
 }
 
@@ -140,4 +202,101 @@ main {
 
 .grid-message.error {
   color: #e05555;
+}
+
+/* ─── Hero (landing page) ────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-gap) var(--page-padding-x);
+}
+
+.hero-tagline {
+  margin-top: 0.75rem;
+  color: var(--color-text-secondary);
+  font-size: var(--text-tagline-size);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── Generic page section ───────────────────────────────── */
+
+.page-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding-x) var(--section-gap);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-section-title-size);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--grid-gap);
+}
+
+.placeholder-note {
+  color: var(--color-text-secondary);
+  font-size: var(--text-tagline-size);
+  text-align: center;
+}
+
+/* ─── Feature / link cards (landing page) ────────────────── */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-col), 1fr));
+  gap: var(--grid-gap);
+}
+
+.feature-card,
+.link-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.link-card {
+  display: block;
+  text-decoration: none;
+}
+
+.feature-card:hover,
+.link-card:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+}
+
+.feature-card h3,
+.link-card h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-name-size);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.feature-card p,
+.link-card p {
+  margin-top: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: var(--text-small-size);
+}
+
+/* ─── Footer ──────────────────────────────────────────────── */
+
+.site-footer {
+  text-align: center;
+  padding: var(--page-padding-y) var(--page-padding-x);
+  color: var(--color-text-secondary);
+  font-size: var(--text-small-size);
+  border-top: 1px solid var(--color-border);
 }

@@ -120,7 +120,6 @@ async function init() {
   const taglineEl = document.querySelector('.collective-tagline');
   if (nameEl)    nameEl.textContent    = data.collective.name;
   if (taglineEl) taglineEl.textContent = data.collective.tagline ?? '';
-  document.title = data.collective.name;
 
   // Filter out members with no name (incomplete placeholder entries)
   // Silly Goose is pinned first; remaining members sorted alphabetically
