@@ -429,7 +429,7 @@ a.lineup-tag:hover {
 /* Grid cards (upcoming + past) */
 
 .event-card-grid {
-  grid-template-columns: repeat(auto-fit, minmax(var(--event-grid-min-col), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--event-grid-min-col), var(--event-grid-max-col)));
 }
 
 .event-card {

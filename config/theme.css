@@ -82,5 +82,6 @@
   --event-hero-poster-width: 340px;
   --event-hero-max-width: 860px;
   --event-grid-min-col:  220px;
+  --event-grid-max-col:  280px;
 
 }
