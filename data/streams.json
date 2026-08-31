@@ -8,16 +8,12 @@
     {
       "title": "Monday Stream",
       "day": "Monday",
-      "time": "20:00",
-      "platform": "Twitch",
-      "url": "https://www.twitch.tv/giddygeese"
+      "time": "20:00"
     },
     {
       "title": "Thursday Stream",
       "day": "Thursday",
-      "time": "19:00",
-      "platform": "Twitch",
-      "url": "https://www.twitch.tv/giddygeese"
+      "time": "19:00"
     }
   ]
 }

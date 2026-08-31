@@ -116,15 +116,13 @@ Edit `data/streams.json`. It has two lists:
 
 `icon` is any Font Awesome class (the same set used for DJ social icons in `js/main.js`'s `PLATFORMS` map).
 
-`streams` — the recurring weekly schedule, no dates since these repeat rather than happening once:
+`streams` — the recurring weekly schedule, no dates since these repeat rather than happening once. Just title/day/time — no link, since where to watch is already covered by `platforms` above:
 
 ```json
 {
   "title": "Monday Stream",
   "day": "Monday",
-  "time": "20:00",
-  "platform": "Twitch",
-  "url": "https://www.twitch.tv/giddygeese"
+  "time": "20:00"
 }
 ```
 

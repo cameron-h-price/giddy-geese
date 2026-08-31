@@ -10,20 +10,6 @@ function buildStreamCard(stream) {
   meta.textContent = `Every ${stream.day} · ${stream.time}`;
   card.appendChild(meta);
 
-  if (stream.url?.trim()) {
-    const btn = document.createElement('a');
-    btn.className = 'calendar-btn';
-    btn.href = stream.url;
-    btn.target = '_blank';
-    btn.rel = 'noopener noreferrer';
-
-    const i = document.createElement('i');
-    i.className = 'fa-brands fa-twitch';
-    btn.appendChild(i);
-    btn.appendChild(document.createTextNode(` Watch on ${stream.platform}`));
-    card.appendChild(btn);
-  }
-
   return card;
 }
 
