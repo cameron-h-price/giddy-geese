@@ -1,12 +1,12 @@
 {
   "events": [
     {
-      "name": "EXAMPLE — Autumn Warehouse Session",
-      "poster": "assets/images/events/example-autumn-warehouse.jpg",
-      "date": "2026-09-19",
-      "time": "22:00",
-      "location": "The Old Mill, Manchester",
-      "description": "Placeholder event — replace with a real one. All-night set from the collective plus a guest.",
+      "name": "RARA RADIO X GG - Breakbeat Boulevard Session",
+      "poster": "assets/EventPosters/Rara X GG/Poster.png",
+      "date": "2026-09-26",
+      "time": "12:00",
+      "location": "Rara Radio Eindhoven",
+      "description": "Drum and Bass and breakbeat fans can follow our stream or join us at the location for an afternoon of the music you love.",
       "lineup": ["CmunSelecta", "Silly Goose", "DJ Guest"]
     },
     {

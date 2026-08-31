@@ -1,6 +1,9 @@
 .env
 node_modules/
 
+# Design source files — large, not needed by the deployed site
+*.xcf
+
 # Jekyll build output / local dev artifacts
 _site/
 .jekyll-cache/
