@@ -1,8 +1,8 @@
-# Monkey Business
+# GiddyGeese
 
-A static directory site for the Monkey Business DJ collective. One card per member, displayed alphabetically.
+A static directory site for the GiddyGeese DJ collective. One card per member, displayed alphabetically.
 
-Live at **https://cameron-h-price.github.io/monkey-business/**
+Live at **https://cameron-h-price.github.io/giddy-geese/**
 
 ## Deploying
 
@@ -70,7 +70,7 @@ All design tokens live in **`config/theme.css`** — it's the only file that nee
 To use a Google Font, uncomment the `@import` line at the top of `theme.css`, paste in the font URL, then update these two variables.
 
 ```css
---text-heading-size   /* "Monkey Business" title */
+--text-heading-size   /* "GiddyGeese" title */
 --text-name-size      /* DJ name on each card */
 --text-tagline-size   /* collective tagline under the title */
 ```
@@ -107,7 +107,7 @@ The `collective` block at the top of `djs.json` controls the page header:
 
 ```json
 "collective": {
-  "name": "Monkey Business",
+  "name": "GiddyGeese",
   "tagline": "optional tagline shown under the title"
 }
 ```
