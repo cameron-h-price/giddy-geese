@@ -116,15 +116,18 @@ Edit `data/streams.json`. It has two lists:
 
 `icon` is any Font Awesome class (the same set used for DJ social icons in `js/main.js`'s `PLATFORMS` map).
 
-`streams` — the recurring weekly schedule, no dates since these repeat rather than happening once. Just title/day/time — no link, since where to watch is already covered by `platforms` above:
+`streams` — the recurring weekly schedule, no dates since these repeat rather than happening once:
 
 ```json
 {
-  "title": "Monday Stream",
+  "title": "House Music Host Train",
   "day": "Monday",
-  "time": "20:00"
+  "time": "20:00",
+  "platform": "Kick"
 }
 ```
+
+`platform` (optional) must exactly match a `label` in the `platforms` list above — the matching link/icon is shown on the card. Omit it if the stream doesn't need its own link (the general `platforms` section at the top already covers "where to watch" by default).
 
 Unlike events, there's no hero/past-event logic here — every entry in `streams` just renders as its own card, in file order.
 

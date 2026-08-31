@@ -1,4 +1,4 @@
-function buildStreamCard(stream) {
+function buildStreamCard(stream, platformLookup) {
   const card = document.createElement('article');
   card.className = 'feature-card';
 
@@ -9,6 +9,11 @@ function buildStreamCard(stream) {
   const meta = document.createElement('p');
   meta.textContent = `Every ${stream.day} · ${stream.time}`;
   card.appendChild(meta);
+
+  const platform = platformLookup.get(stream.platform);
+  if (platform) {
+    card.appendChild(buildPlatformLink(platform));
+  }
 
   return card;
 }
@@ -54,9 +59,11 @@ async function init() {
     return;
   }
 
-  for (const platform of data.platforms ?? []) {
+  const platforms = data.platforms ?? [];
+  for (const platform of platforms) {
     platformsEl.appendChild(buildPlatformLink(platform));
   }
+  const platformLookup = new Map(platforms.map(p => [p.label, p]));
 
   const streams = data.streams ?? [];
   if (streams.length === 0) {
@@ -65,7 +72,7 @@ async function init() {
   }
 
   for (const stream of streams) {
-    grid.appendChild(buildStreamCard(stream));
+    grid.appendChild(buildStreamCard(stream, platformLookup));
   }
 }
 

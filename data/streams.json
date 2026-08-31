@@ -8,12 +8,14 @@
     {
       "title": "House Music Host Train",
       "day": "Monday",
-      "time": "20:00"
+      "time": "20:00",
+      "platform": "Kick"
     },
     {
       "title": "Treasure Thursdays",
       "day": "Thursday",
-      "time": "19:00"
+      "time": "19:00",
+      "platform": "Noderunners Radio"
     }
   ]
 }
