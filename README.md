@@ -104,6 +104,24 @@ Each name in `lineup` is checked (case-insensitively) against the `name` field i
 
 ---
 
+## Editing the stream schedule
+
+Edit `data/streams.json`. It's a flat list of recurring streams — no dates, since these repeat weekly rather than happening once:
+
+```json
+{
+  "title": "Monday Stream",
+  "day": "Monday",
+  "time": "20:00",
+  "platform": "Twitch",
+  "url": "https://www.twitch.tv/cmunselecta"
+}
+```
+
+Unlike events, there's no hero/past-event logic here — every entry in the list just renders as its own card on the **Upcoming Streams** page, in file order.
+
+---
+
 ## Visual / style changes
 
 All design tokens live in **`config/theme.css`**. Nothing is hardcoded anywhere else.

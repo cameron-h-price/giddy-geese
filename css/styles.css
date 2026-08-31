@@ -245,6 +245,7 @@ main {
   color: var(--color-text-secondary);
   font-size: var(--text-tagline-size);
   text-align: center;
+  margin-bottom: var(--grid-gap);
 }
 
 /* ─── Feature / link cards (landing page) ────────────────── */
