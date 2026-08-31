@@ -1,18 +1,23 @@
 {
+  "platforms": [
+    { "label": "Twitch", "url": "https://www.twitch.tv/giddygeese", "icon": "fa-brands fa-twitch" },
+    { "label": "Kick", "url": "https://kick.com/giddygeese", "icon": "fa-solid fa-tower-broadcast" },
+    { "label": "Noderunners Radio", "url": "https://noderunnersradio.com/", "icon": "fa-solid fa-link" }
+  ],
   "streams": [
     {
       "title": "Monday Stream",
       "day": "Monday",
       "time": "20:00",
       "platform": "Twitch",
-      "url": "https://www.twitch.tv/cmunselecta"
+      "url": "https://www.twitch.tv/giddygeese"
     },
     {
       "title": "Thursday Stream",
       "day": "Thursday",
       "time": "19:00",
       "platform": "Twitch",
-      "url": "https://www.twitch.tv/cmunselecta"
+      "url": "https://www.twitch.tv/giddygeese"
     }
   ]
 }

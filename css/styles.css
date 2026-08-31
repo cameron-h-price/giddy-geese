@@ -386,6 +386,13 @@ a.lineup-tag:hover {
   background: var(--color-accent-hover);
 }
 
+.platform-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--grid-gap);
+}
+
 /* Hero card (next event) */
 
 .event-hero {

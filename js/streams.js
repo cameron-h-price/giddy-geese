@@ -27,6 +27,20 @@ function buildStreamCard(stream) {
   return card;
 }
 
+function buildPlatformLink(platform) {
+  const link = document.createElement('a');
+  link.className = 'calendar-btn';
+  link.href = platform.url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+
+  const i = document.createElement('i');
+  i.className = platform.icon;
+  link.appendChild(i);
+  link.appendChild(document.createTextNode(` ${platform.label}`));
+  return link;
+}
+
 function showMessage(container, text, isError = false) {
   const p = document.createElement('p');
   p.className = isError ? 'grid-message error' : 'grid-message';
@@ -36,6 +50,7 @@ function showMessage(container, text, isError = false) {
 
 async function init() {
   const grid = document.getElementById('stream-grid');
+  const platformsEl = document.getElementById('platform-links');
 
   let data;
   try {
@@ -51,6 +66,10 @@ async function init() {
       true,
     );
     return;
+  }
+
+  for (const platform of data.platforms ?? []) {
+    platformsEl.appendChild(buildPlatformLink(platform));
   }
 
   const streams = data.streams ?? [];

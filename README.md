@@ -106,7 +106,17 @@ Each name in `lineup` is checked (case-insensitively) against the `name` field i
 
 ## Editing the stream schedule
 
-Edit `data/streams.json`. It's a flat list of recurring streams — no dates, since these repeat weekly rather than happening once:
+Edit `data/streams.json`. It has two lists:
+
+`platforms` — the "Watch & Listen" links shown at the top of the page, separate from the schedule cards:
+
+```json
+{ "label": "Twitch", "url": "https://www.twitch.tv/giddygeese", "icon": "fa-brands fa-twitch" }
+```
+
+`icon` is any Font Awesome class (the same set used for DJ social icons in `js/main.js`'s `PLATFORMS` map).
+
+`streams` — the recurring weekly schedule, no dates since these repeat rather than happening once:
 
 ```json
 {
@@ -114,11 +124,11 @@ Edit `data/streams.json`. It's a flat list of recurring streams — no dates, si
   "day": "Monday",
   "time": "20:00",
   "platform": "Twitch",
-  "url": "https://www.twitch.tv/cmunselecta"
+  "url": "https://www.twitch.tv/giddygeese"
 }
 ```
 
-Unlike events, there's no hero/past-event logic here — every entry in the list just renders as its own card on the **Upcoming Streams** page, in file order.
+Unlike events, there's no hero/past-event logic here — every entry in `streams` just renders as its own card, in file order.
 
 ---
 
