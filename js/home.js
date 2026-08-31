@@ -1,6 +1,7 @@
 async function initNextEvent() {
   const card = document.getElementById('next-event-card');
   if (!card) return;
+  const posterEl = document.getElementById('next-event-poster');
   const titleEl = card.querySelector('h3');
   const descEl = card.querySelector('p');
 
@@ -26,6 +27,13 @@ async function initNextEvent() {
   const dateLabel = next._when.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
   titleEl.textContent = next.name;
   descEl.textContent = `${dateLabel} · ${next.location}`;
+
+  if (next.poster?.trim()) {
+    posterEl.src = next.poster;
+    posterEl.alt = next.name;
+    posterEl.hidden = false;
+    posterEl.onerror = () => { posterEl.hidden = true; };
+  }
 }
 
 initNextEvent();

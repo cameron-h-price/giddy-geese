@@ -261,7 +261,17 @@ main {
   border: 1px solid var(--color-border);
   border-radius: var(--card-radius);
   padding: var(--card-padding);
+  overflow: hidden;
   transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.card-poster {
+  display: block;
+  width: calc(100% + var(--card-padding) * 2);
+  margin: calc(-1 * var(--card-padding)) calc(-1 * var(--card-padding)) var(--card-padding);
+  aspect-ratio: var(--poster-aspect-ratio);
+  object-fit: cover;
+  background-color: var(--color-border);
 }
 
 .link-card {
