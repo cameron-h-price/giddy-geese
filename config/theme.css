@@ -80,5 +80,6 @@
   --poster-aspect-ratio: 3 / 4;
   --event-hero-gap:      2.5rem;
   --event-hero-poster-width: 340px;
+  --event-hero-max-width: 860px;
 
 }

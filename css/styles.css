@@ -352,6 +352,8 @@ a.lineup-tag:hover {
 .event-hero {
   display: flex;
   gap: var(--event-hero-gap);
+  max-width: var(--event-hero-max-width);
+  margin: 0 auto;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--card-radius);
