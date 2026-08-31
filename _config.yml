@@ -1,0 +1,8 @@
+title: GiddyGeese
+description: A DJ collective.
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - Logo

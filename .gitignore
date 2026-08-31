@@ -1,2 +1,9 @@
 .env
 node_modules/
+
+# Jekyll build output / local dev artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/

@@ -1,6 +1,6 @@
 # GiddyGeese
 
-A static directory site for the GiddyGeese DJ collective. One card per member, displayed alphabetically.
+Site for the GiddyGeese DJ collective — built with Jekyll. Pages: Home, Upcoming Events, Upcoming Streams, Our DJs (one card per member), Our Mission, Code of Conduct & Support, Contact Us.
 
 Live at **https://cameron-h-price.github.io/giddy-geese/**
 
@@ -10,7 +10,34 @@ Live at **https://cameron-h-price.github.io/giddy-geese/**
 git push
 ```
 
-GitHub Pages auto-deploys on every push to master. No build step.
+GitHub Pages builds and deploys automatically on every push to master — no CI config needed. It runs Jekyll via the `github-pages` gem, which this repo's `Gemfile` pins exactly, so a local build behaves the same as production.
+
+## Local development
+
+```
+bundle install       # one-time, or after Gemfile changes
+bundle exec jekyll serve
+```
+
+Serves the site at `http://127.0.0.1:4000` with auto-rebuild on file changes.
+
+## Adding a page
+
+Each page is a file at the repo root with YAML front matter:
+
+```
+---
+layout: default
+title: Page Title — GiddyGeese
+active: some-id        # matches an entry in _includes/nav.html for the active nav state
+font_awesome: true      # optional — include Font Awesome (needed for social icons)
+scripts:                # optional — extra <script> tags before </body>
+  - /js/some-script.js
+---
+Page content goes here — this is inserted into {{ content }} in _layouts/default.html.
+```
+
+Shared markup lives in `_layouts/default.html` (page shell) and `_includes/nav.html` / `_includes/footer.html` (nav + footer, included on every page).
 
 ---
 
@@ -44,7 +71,9 @@ Leave a platform out of the `socials` object entirely (or set it to `""`) to hid
 
 ## Visual / style changes
 
-All design tokens live in **`config/theme.css`** — it's the only file that needs changing for a full rebrand. Nothing is hardcoded anywhere else.
+All design tokens live in **`config/theme.css`**. Nothing is hardcoded anywhere else.
+
+The Colour and Typography values specifically are generated from `../brand.json` (one level up, outside this repo) via `../sync_brand.py` — see `../BRANDING.md`. Edit `brand.json`, not `theme.css` directly, for those; a pre-commit hook re-syncs automatically. Everything else in `theme.css` (layout, grid, cards, nav) is edited directly here.
 
 ### Colours
 
@@ -103,7 +132,7 @@ To use a Google Font, uncomment the `@import` line at the top of `theme.css`, pa
 
 ## Collective config
 
-The `collective` block at the top of `djs.json` controls the page header:
+The `collective` block at the top of `djs.json` controls the header on the **Our DJs** page (`djs.html`) — it's populated at runtime by `js/main.js`. The landing page's hero text is static and edited directly in `index.html`.
 
 ```json
 "collective": {

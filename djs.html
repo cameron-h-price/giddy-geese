@@ -1,55 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our DJs — GiddyGeese</title>
-  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+---
+layout: default
+title: Our DJs — GiddyGeese
+active: djs
+font_awesome: true
+scripts:
+  - /js/main.js
+---
+<header class="site-header">
+  <h1 class="collective-name">GiddyGeese</h1>
+  <p class="collective-tagline"></p>
+</header>
 
-  <!-- Font Awesome — social platform icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  >
-
-  <!-- Design tokens — swap this file to apply a new brand -->
-  <link rel="stylesheet" href="config/theme.css">
-
-  <!-- Layout and components -->
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-
-  <nav class="site-nav">
-    <a href="index.html" class="nav-brand">
-      <img src="assets/logo.jpg" alt="GiddyGeese logo" class="nav-logo">
-      GiddyGeese
-    </a>
-    <ul class="nav-links">
-      <li><a href="events.html">Upcoming Events</a></li>
-      <li><a href="streams.html">Upcoming Streams</a></li>
-      <li><a href="djs.html" class="active">Our DJs</a></li>
-      <li><a href="mission.html">Our Mission</a></li>
-      <li><a href="conduct.html">Code of Conduct &amp; Support</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <header class="site-header">
-    <h1 class="collective-name">GiddyGeese</h1>
-    <p class="collective-tagline"></p>
-  </header>
-
-  <main>
-    <div id="dj-grid" class="dj-grid"></div>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2026 GiddyGeese</p>
-  </footer>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
+<main>
+  <div id="dj-grid" class="dj-grid"></div>
+</main>
