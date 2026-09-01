@@ -32,7 +32,7 @@ function buildStreamCard(stream, platformLookup) {
   }
 
   const poster = document.createElement('img');
-  poster.className = 'stream-poster';
+  poster.className = 'card-poster-bottom';
   poster.alt = stream.title;
   poster.src = resolvePoster(stream);
   poster.onerror = () => { poster.src = PLACEHOLDER_POSTER; };

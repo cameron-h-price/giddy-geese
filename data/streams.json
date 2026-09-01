@@ -9,7 +9,8 @@
       "title": "House Music Host Train",
       "day": "Monday",
       "time": "20:00",
-      "platform": "Kick"
+      "platform": "Kick",
+      "poster": "assets/images/VertPoster.jpg"
     },
     {
       "title": "Treasure Thursdays",
