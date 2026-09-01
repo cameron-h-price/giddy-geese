@@ -275,6 +275,17 @@ main {
   background-color: var(--color-border);
 }
 
+/* Same treatment as .card-poster, but bleeds to the bottom edge instead of
+   the top — for cards (e.g. stream cards) where the poster sits last. */
+.stream-poster {
+  display: block;
+  width: calc(100% + var(--card-padding) * 2);
+  margin: var(--card-padding) calc(-1 * var(--card-padding)) calc(-1 * var(--card-padding));
+  aspect-ratio: var(--poster-aspect-ratio);
+  object-fit: cover;
+  background-color: var(--color-border);
+}
+
 .link-card {
   display: block;
   text-decoration: none;

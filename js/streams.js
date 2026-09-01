@@ -18,13 +18,6 @@ function buildStreamCard(stream, platformLookup) {
   const card = document.createElement('article');
   card.className = 'feature-card';
 
-  const poster = document.createElement('img');
-  poster.className = 'card-poster';
-  poster.alt = stream.title;
-  poster.src = resolvePoster(stream);
-  poster.onerror = () => { poster.src = PLACEHOLDER_POSTER; };
-  card.appendChild(poster);
-
   const title = document.createElement('h3');
   title.textContent = stream.title;
   card.appendChild(title);
@@ -37,6 +30,13 @@ function buildStreamCard(stream, platformLookup) {
   if (platform) {
     card.appendChild(buildPlatformLink(platform));
   }
+
+  const poster = document.createElement('img');
+  poster.className = 'stream-poster';
+  poster.alt = stream.title;
+  poster.src = resolvePoster(stream);
+  poster.onerror = () => { poster.src = PLACEHOLDER_POSTER; };
+  card.appendChild(poster);
 
   return card;
 }
