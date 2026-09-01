@@ -1,6 +1,29 @@
+/*
+ * Placeholder poster — shown when a stream has no poster or it fails to load.
+ * Defined as a data URI so no extra file is needed.
+ */
+const PLACEHOLDER_POSTER = `data:image/svg+xml,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+    <rect width="300" height="400" fill="#2c2c2c"/>
+    <path d="M100 260 L150 180 L200 260 Z" fill="#444"/>
+    <circle cx="210" cy="150" r="22" fill="#444"/>
+  </svg>`
+)}`;
+
+function resolvePoster(stream) {
+  return stream.poster?.trim() || PLACEHOLDER_POSTER;
+}
+
 function buildStreamCard(stream, platformLookup) {
   const card = document.createElement('article');
   card.className = 'feature-card';
+
+  const poster = document.createElement('img');
+  poster.className = 'card-poster';
+  poster.alt = stream.title;
+  poster.src = resolvePoster(stream);
+  poster.onerror = () => { poster.src = PLACEHOLDER_POSTER; };
+  card.appendChild(poster);
 
   const title = document.createElement('h3');
   title.textContent = stream.title;

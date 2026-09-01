@@ -15,7 +15,8 @@
       "title": "Treasure Thursdays",
       "day": "Thursday",
       "time": "19:00",
-      "platform": "Noderunners Radio"
+      "platform": "Noderunners Radio",
+      "poster": "assets/images/TreasureThursdaysPoster.png"
     }
   ]
 }
