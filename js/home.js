@@ -55,6 +55,7 @@ function nextOccurrence(dayName, timeStr, now) {
 async function initNextStream() {
   const card = document.getElementById('next-stream-card');
   if (!card) return;
+  const posterEl = document.getElementById('next-stream-poster');
   const titleEl = card.querySelector('h3');
   const descEl = card.querySelector('p');
 
@@ -78,6 +79,13 @@ async function initNextStream() {
   const dateLabel = next._when.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' });
   titleEl.textContent = next.title;
   descEl.textContent = `${dateLabel} · ${next.time}`;
+
+  if (next.poster?.trim()) {
+    posterEl.src = next.poster;
+    posterEl.alt = next.title;
+    posterEl.hidden = false;
+    posterEl.onerror = () => { posterEl.hidden = true; };
+  }
 }
 
 initNextEvent();
