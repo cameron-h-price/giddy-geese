@@ -84,4 +84,8 @@
   --event-grid-min-col:  220px;
   --event-grid-max-col:  280px;
 
+  /* --- Gallery --- */
+  --gallery-min-col:        220px;
+  --gallery-aspect-ratio:   1 / 1;
+
 }

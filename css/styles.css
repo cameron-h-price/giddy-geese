@@ -399,6 +399,127 @@ a.lineup-tag:hover {
   margin-top: 0.75rem;
 }
 
+/* ─── Gallery ─────────────────────────────────────────────── */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--gallery-min-col), 1fr));
+  gap: var(--grid-gap);
+}
+
+.gallery-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--gallery-aspect-ratio);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  padding: 0;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 0.18s ease;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb:focus-visible {
+  border-color: var(--color-border-hover);
+}
+
+.gallery-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: var(--color-border); /* visible while image loads */
+}
+
+/* ─── Gallery lightbox ────────────────────────────────────── */
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.gallery-lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--card-radius);
+}
+
+.lightbox-caption {
+  color: var(--color-text-secondary);
+  font-size: var(--text-small-size);
+  text-align: center;
+  max-width: 640px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--color-accent);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-border-hover);
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
 /* Hero card (next event) */
 
 .event-hero {

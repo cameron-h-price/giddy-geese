@@ -1,6 +1,6 @@
 # GiddyGeese
 
-Site for the GiddyGeese DJ collective — built with Jekyll. Pages: Home, Upcoming Events, Upcoming Streams, Our DJs (one card per member), Our Mission, Code of Conduct & Support, Contact Us.
+Site for the GiddyGeese DJ collective — built with Jekyll. Pages: Home, Upcoming Events, Upcoming Streams, Our DJs (one card per member), Gallery, Our Mission, Code of Conduct & Support, Contact Us.
 
 Live at **https://cameron-h-price.github.io/giddy-geese/**
 
@@ -101,6 +101,24 @@ Drop the image in `assets/images/events/` and set `poster` to `"assets/images/ev
 ### Lineup
 
 Each name in `lineup` is checked (case-insensitively) against the `name` field in `data/djs.json`. A match becomes a link to that member's card on the Our DJs page; anything that doesn't match (e.g. a guest not in the collective) is shown as plain text. So a collective member's name should be spelled exactly as it appears in `djs.json` to get the link.
+
+---
+
+## Adding a gallery photo
+
+Edit `data/gallery.json`. Add an entry to the `photos` array:
+
+```json
+{
+  "src": "assets/images/gallery/filename.jpg",
+  "caption": "Optional one-line caption.",
+  "alt": "Optional alt text — falls back to the caption, then a generic description."
+}
+```
+
+Drop the image in `assets/images/gallery/` and set `src` to `"assets/images/gallery/filename.jpg"`. If `src` is missing or the file fails to load, a placeholder is shown instead.
+
+Photos render on the **Gallery** page (`gallery.html`) in file order — put newest first if you want reverse-chronological. Clicking a thumbnail opens it full-size in a lightbox with next/prev navigation (click, arrow keys, or Escape to close).
 
 ---
 
