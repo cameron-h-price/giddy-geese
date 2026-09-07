@@ -18,6 +18,7 @@ async function initNextEvent() {
 
   const now = new Date();
   const next = (data.events ?? [])
+    .filter(event => !event.hidden)
     .map(event => ({ ...event, _when: new Date(`${event.date}T${event.time}`) }))
     .filter(event => event._when >= now)
     .sort((a, b) => a._when - b._when)[0];

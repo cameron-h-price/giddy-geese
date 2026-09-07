@@ -210,10 +210,12 @@ async function init() {
   );
 
   const now = new Date();
-  const events = (eventsData.events ?? []).map(event => ({
-    ...event,
-    _when: new Date(`${event.date}T${event.time}`),
-  }));
+  const events = (eventsData.events ?? [])
+    .filter(event => !event.hidden)
+    .map(event => ({
+      ...event,
+      _when: new Date(`${event.date}T${event.time}`),
+    }));
 
   const upcoming = events
     .filter(e => e._when >= now)
