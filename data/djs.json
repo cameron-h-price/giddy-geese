@@ -17,6 +17,7 @@
     {
       "id": "SillyGoose",
       "name": "Silly Goose",
+      "image": "assets/DJImages/SillyGoose.jpg",
       "socials": {
         "website": "https://linktr.ee/antoine_sillygoose",
         "instagram": "https://www.instagram.com/antoine_sillygoose/",
@@ -27,6 +28,7 @@
     {
       "id": "Aimee",
       "name": "Aimee",
+      "image": "assets/DJImages/Aimee.jpeg",
       "socials": {}
     }
   ]
