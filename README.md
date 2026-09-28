@@ -86,15 +86,16 @@ Edit `data/events.json`. Add an entry to the `events` array:
 }
 ```
 
-`duration` (hours, optional) sets how long the "Add to Calendar" button's event block is — defaults to `6` if omitted. Decimals are fine (e.g. `2.5`).
+`duration` (hours, optional) sets when the event ends — used for the "Add to Calendar" block and for when it moves to Past Events. Defaults to `6` if omitted. Decimals are fine (e.g. `2.5`).
 
 `time` can also be a range, e.g. `"18:00-23:00"` (overnight ranges like `"22:00-04:00"` work too). The full range is shown on the card and sets the calendar block's end time, so `duration` isn't needed. Set `"hidden": true` to keep an event off the site.
 
 The **Upcoming Events** page (`events.html`) sorts these automatically — no manual ordering needed:
 
-- The soonest event with a date/time in the future is shown as the large hero card.
-- Any other future events appear below it as smaller cards, in date order.
-- Anything with a date/time in the past automatically drops into the "Past Events" section instead.
+- The soonest event that hasn't finished yet is shown as the large hero card (so an event stays up while it's running).
+- Any other upcoming events appear below it as smaller cards, in date order.
+- Once an event's end time passes (end of the `time` range, or start + `duration`), it drops into the "Past Events" section — faded, newest first, no "Add to Calendar" button.
+- The home page's "Next Event" card uses the same rules (shared `js/event-times.js`).
 
 ### Poster
 

@@ -71,18 +71,10 @@ function toGCalDateString(date) {
 }
 
 function googleCalendarUrl(event) {
-  const start = event._when;
-  let end;
-  if (event._end) {
-    end = event._end;
-  } else {
-    const durationHours = event.duration ?? 6; // hours — optional per-event override, defaults to 6
-    end = new Date(start.getTime() + durationHours * 60 * 60 * 1000);
-  }
   const params = new URLSearchParams({
     action: 'TEMPLATE',
     text: event.name,
-    dates: `${toGCalDateString(start)}/${toGCalDateString(end)}`,
+    dates: `${toGCalDateString(event._when)}/${toGCalDateString(event._end)}`,
     details: event.description ?? '',
     location: event.location ?? '',
   });
@@ -164,7 +156,7 @@ function buildCard(event, lookup, { past = false } = {}) {
 
   body.appendChild(buildMeta(event));
   body.appendChild(buildLineup(event.lineup, lookup));
-  body.appendChild(buildCalendarButton(event));
+  if (!past) body.appendChild(buildCalendarButton(event));
 
   card.appendChild(body);
   return card;
@@ -217,23 +209,14 @@ async function init() {
   const now = new Date();
   const events = (eventsData.events ?? [])
     .filter(event => !event.hidden)
-    .map(event => {
-      // time may be a single start ("22:00") or a range ("18:00-23:00")
-      const [startTime, endTime] = (event.time ?? '').split('-').map(t => t.trim());
-      const _when = new Date(`${event.date}T${startTime}`);
-      let _end = null;
-      if (endTime) {
-        _end = new Date(`${event.date}T${endTime}`);
-        if (_end <= _when) _end = new Date(_end.getTime() + 24 * 60 * 60 * 1000); // runs past midnight
-      }
-      return { ...event, _when, _end };
-    });
+    .map(withEventTimes);
 
+  // An event stays upcoming until it has finished, not just started
   const upcoming = events
-    .filter(e => e._when >= now)
+    .filter(e => e._end >= now)
     .sort((a, b) => a._when - b._when);
   const past = events
-    .filter(e => e._when < now)
+    .filter(e => e._end < now)
     .sort((a, b) => b._when - a._when);
 
   // Hero: soonest upcoming event
@@ -253,13 +236,10 @@ async function init() {
     }
   }
 
-  // Past events
-  if (past.length === 0) {
-    pastSection.hidden = true;
-  } else {
-    for (const event of past) {
-      pastGridEl.appendChild(buildCard(event, lookup, { past: true }));
-    }
+  // Past events — section starts hidden in the markup, so reveal it when there's something to show
+  pastSection.hidden = past.length === 0;
+  for (const event of past) {
+    pastGridEl.appendChild(buildCard(event, lookup, { past: true }));
   }
 }
 
