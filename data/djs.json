@@ -6,7 +6,7 @@
   "members": [
     {
       "id": "cmun-selecta",
-      "name": "CmunSelecta",
+      "name": "Cmun Selecta",
       "image": "https://cmunselecta.com/assets/photo.jpg",
       "socials": {
         "website": "https://cmunselecta.com",
@@ -25,8 +25,8 @@
       }
     },
     {
-      "id": "dj-three",
-      "name": "DJ Three",
+      "id": "Aimee",
+      "name": "Aimee",
       "socials": {}
     }
   ]
