@@ -287,6 +287,16 @@ The collective's own links live in `_data/socials.json`. They're rendered at bui
 
 ---
 
+## Highlighted content (home page)
+
+The third card on the home page embeds an Instagram Reel set in `_data/highlight.json`:
+
+- `instagram_url`: the reel or post link. You can strip anything after the `?`, e.g. `https://www.instagram.com/reel/XXXX/`. Leave it as `""` to show a "Coming soon" card instead.
+- `title` / `text`: an optional headline and line of text above the reel. Leave them as `""` to hide them.
+- `label`: the small accent label at the top of the card.
+
+---
+
 ## Collective config
 
 The `collective` block at the top of `djs.json` controls the header on the **Our DJs** page (`djs.html`) — it's populated at runtime by `js/main.js`. The landing page's hero text is static and edited directly in `index.html`.

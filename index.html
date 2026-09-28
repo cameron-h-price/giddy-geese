@@ -26,12 +26,30 @@ scripts:
         <p>Check back for our stream schedule.</p>
         <img class="card-poster-bottom" id="next-stream-poster" alt="" hidden>
       </a>
-      <div class="feature-card">
-        <span class="feature-card-label">Highlighted Content</span>
-        <h3>Coming soon</h3>
-        <p>Placeholder — highlight a DJ, mix, or announcement here.</p>
+      {% assign highlight = site.data.highlight %}
+      {% if highlight.instagram_url != "" %}
+      <div class="feature-card highlight-card">
+        <span class="feature-card-label">{{ highlight.label }}</span>
+        {% if highlight.title != "" %}<h3>{{ highlight.title }}</h3>{% endif %}
+        {% if highlight.text != "" %}<p>{{ highlight.text }}</p>{% endif %}
+        <div class="highlight-embed">
+          <blockquote class="instagram-media" data-instgrm-permalink="{{ highlight.instagram_url }}" data-instgrm-version="14">
+            <a href="{{ highlight.instagram_url }}" target="_blank" rel="noopener">Watch on Instagram</a>
+          </blockquote>
+        </div>
       </div>
+      {% else %}
+      <div class="feature-card">
+        <span class="feature-card-label">{{ highlight.label }}</span>
+        <h3>Coming soon</h3>
+        <p>Check back for highlighted mixes and moments.</p>
+      </div>
+      {% endif %}
     </div>
   </section>
 
 </main>
+
+{% if site.data.highlight.instagram_url != "" %}
+<script async src="https://www.instagram.com/embed.js"></script>
+{% endif %}

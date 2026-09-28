@@ -323,6 +323,21 @@ main {
   border-color: var(--color-border-hover);
 }
 
+/* Highlighted Content card — holds an Instagram embed rather than a link,
+   so no hover state. Instagram's embed sets an inline 326px min-width and
+   margins; override them so the reel fills the card at any width. */
+.highlight-card:hover {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.highlight-embed .instagram-media {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
 .feature-card-label {
   display: block;
   color: var(--color-accent);
