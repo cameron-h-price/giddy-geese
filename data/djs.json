@@ -30,6 +30,21 @@
       "name": "Aimee",
       "image": "assets/DJImages/Aimee.jpeg",
       "socials": {}
+    },
+    {
+      "id": "LunaSkyler",
+      "name": "Luna Skyler",
+      "image": "assets/DJImages/LunaSkyler.jpg",
+      "socials": {
+        "instagram": "https://www.instagram.com/lunaskyler.dnb/",
+        "youtube": "https://www.youtube.com/@Lunaskyler_DnB"
+      }
+    },
+    {
+      "id": "Madstew",
+      "name": "Madstew",
+      "image": "assets/DJImages/Madstew.jpg",
+      "socials": {}
     }
   ]
 }
