@@ -14,6 +14,11 @@ function resolveSrc(photo) {
   return photo.src?.trim() || PLACEHOLDER_PHOTO;
 }
 
+// Grid uses the small thumbnail when there is one, else the full image.
+function resolveThumb(photo) {
+  return photo.thumb?.trim() || resolveSrc(photo);
+}
+
 function resolveAlt(photo) {
   return photo.alt?.trim() || photo.caption?.trim() || 'Gallery photo';
 }
@@ -26,7 +31,7 @@ function buildThumb(photo, index) {
   btn.setAttribute('aria-label', photo.caption?.trim() || 'View photo');
 
   const img = document.createElement('img');
-  img.src = resolveSrc(photo);
+  img.src = resolveThumb(photo);
   img.alt = resolveAlt(photo);
   img.loading = 'lazy';
   img.onerror = () => { img.src = PLACEHOLDER_PHOTO; };
@@ -152,6 +157,11 @@ async function init() {
     return;
   }
 
+  /*
+   * One flat gallery for now. Each photo also carries `album` (null or a
+   * folder name from _tools/add_photos.py). To switch to albums, group on it
+   * here. See README "Switching to albums".
+   */
   const photos = data.photos ?? [];
 
   if (photos.length === 0) {

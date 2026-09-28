@@ -1,3 +1,64 @@
 {
-  "photos": []
+  "photos": [
+    {
+      "id": "dsc07433-2",
+      "src": "assets/gallery/full/dsc07433-2.jpg",
+      "thumb": "assets/gallery/thumbs/dsc07433-2.jpg",
+      "width": 1600,
+      "height": 1067,
+      "date": "2026-07-25",
+      "album": null,
+      "caption": "",
+      "alt": "",
+      "source": "DSC07433-2.jpg"
+    },
+    {
+      "id": "dsc07217-2",
+      "src": "assets/gallery/full/dsc07217-2.jpg",
+      "thumb": "assets/gallery/thumbs/dsc07217-2.jpg",
+      "width": 1600,
+      "height": 1067,
+      "date": "2026-07-17",
+      "album": null,
+      "caption": "",
+      "alt": "",
+      "source": "DSC07217-2.jpg"
+    },
+    {
+      "id": "dsc07293-2",
+      "src": "assets/gallery/full/dsc07293-2.jpg",
+      "thumb": "assets/gallery/thumbs/dsc07293-2.jpg",
+      "width": 1067,
+      "height": 1600,
+      "date": "2026-07-17",
+      "album": null,
+      "caption": "",
+      "alt": "",
+      "source": "DSC07293-2.jpg"
+    },
+    {
+      "id": "dsc05914-2",
+      "src": "assets/gallery/full/dsc05914-2.jpg",
+      "thumb": "assets/gallery/thumbs/dsc05914-2.jpg",
+      "width": 1600,
+      "height": 1066,
+      "date": "2026-06-06",
+      "album": null,
+      "caption": "",
+      "alt": "",
+      "source": "DSC05914-2.jpg"
+    },
+    {
+      "id": "dsc05705-1",
+      "src": "assets/gallery/full/dsc05705-1.jpg",
+      "thumb": "assets/gallery/thumbs/dsc05705-1.jpg",
+      "width": 1600,
+      "height": 1067,
+      "date": "2026-05-23",
+      "album": null,
+      "caption": "",
+      "alt": "",
+      "source": "DSC05705-1.jpg"
+    }
+  ]
 }

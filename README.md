@@ -106,21 +106,61 @@ Each name in `lineup` is checked (case-insensitively) against the `name` field i
 
 ---
 
-## Adding a gallery photo
+## Adding gallery photos
 
-Edit `data/gallery.json`. Add an entry to the `photos` array:
+Use the helper script. Don't commit full-size photos by hand: phone photos are several MB each, and git keeps them in history even after you delete them.
+
+1. Put the originals in `../GalleryOriginals/`. That folder sits next to this repo, outside git, like `DJImagesOriginals/`.
+2. Run:
+
+   ```
+   python _tools/add_photos.py            # add --dry-run to preview
+   ```
+
+   For each photo that isn't in the gallery yet, the script:
+   - rotates phone photos the right way up
+   - strips all metadata, including GPS location
+   - writes a lightbox copy to `assets/gallery/full/` (1600px long edge) and a grid thumbnail to `assets/gallery/thumbs/` (600px short edge)
+   - adds an entry to the top of `data/gallery.json`, with the newest photos first
+
+   The script needs Pillow. For iPhone `.heic` photos, also run `pip install pillow-heif`.
+3. If you want, fill in `caption` and `alt` in `data/gallery.json`. Then commit and push.
+
+Each entry looks like this:
 
 ```json
 {
-  "src": "assets/images/gallery/filename.jpg",
+  "id": "summer-party-01",
+  "src": "assets/gallery/full/summer-party-01.jpg",
+  "thumb": "assets/gallery/thumbs/summer-party-01.jpg",
+  "width": 1600,
+  "height": 1067,
+  "date": "2026-09-19",
+  "album": null,
   "caption": "Optional one-line caption.",
-  "alt": "Optional alt text — falls back to the caption, then a generic description."
+  "alt": "Optional alt text. Falls back to the caption, then a generic description.",
+  "source": "summer-party-01.jpg"
 }
 ```
 
-Drop the image in `assets/images/gallery/` and set `src` to `"assets/images/gallery/filename.jpg"`. If `src` is missing or the file fails to load, a placeholder is shown instead.
+- `source` is the original's path inside `GalleryOriginals/`. The script uses it to recognise photos it has already added, so it's safe to re-run. It never changes existing entries, so your captions and any reordering you do by hand are kept.
+- `thumb` is optional. Without it, the grid uses `src`. If `src` is missing or fails to load, a placeholder is shown.
+- **Removing a photo:** delete its entry from `gallery.json` and its two files from `assets/gallery/`. Also move the original out of `GalleryOriginals/`, or the next run will add it again.
 
-Photos render on the **Gallery** page (`gallery.html`) in file order — put newest first if you want reverse-chronological. Clicking a thumbnail opens it full-size in a lightbox with next/prev navigation (click, arrow keys, or Escape to close).
+Photos show on the **Gallery** page (`gallery.html`) in file order. Clicking a thumbnail opens it in a lightbox. You can move between photos by clicking, with the arrow keys, or close it with Escape.
+
+### Switching to albums
+
+Right now the gallery is one flat stream, but album information is already recorded:
+
+- Originals at the top level of `GalleryOriginals/` get `"album": null`.
+- Originals in a subfolder (for example `GalleryOriginals/2026-09-19 HetGoed/`) get `"album": "2026-09-19 HetGoed"`. The site currently ignores this.
+
+To switch to albums:
+1. Move the originals into one subfolder per event.
+2. Set `album` on the entries that already exist. This can be done by hand, or by clearing `gallery.json` and `assets/gallery/` and re-running the script.
+3. In `js/gallery.js` `init()`, group `photos` by `album` and render one section or album card per group. The lightbox already accepts any array of photos, so each album can get its own lightbox.
+4. Optionally, add a top-level `"albums"` list to `gallery.json` with a title, date or cover image per album.
 
 ---
 
