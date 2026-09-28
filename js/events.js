@@ -72,8 +72,13 @@ function toGCalDateString(date) {
 
 function googleCalendarUrl(event) {
   const start = event._when;
-  const durationHours = event.duration ?? 6; // hours — optional per-event override, defaults to 6
-  const end = new Date(start.getTime() + durationHours * 60 * 60 * 1000);
+  let end;
+  if (event._end) {
+    end = event._end;
+  } else {
+    const durationHours = event.duration ?? 6; // hours — optional per-event override, defaults to 6
+    end = new Date(start.getTime() + durationHours * 60 * 60 * 1000);
+  }
   const params = new URLSearchParams({
     action: 'TEMPLATE',
     text: event.name,
@@ -212,10 +217,17 @@ async function init() {
   const now = new Date();
   const events = (eventsData.events ?? [])
     .filter(event => !event.hidden)
-    .map(event => ({
-      ...event,
-      _when: new Date(`${event.date}T${event.time}`),
-    }));
+    .map(event => {
+      // time may be a single start ("22:00") or a range ("18:00-23:00")
+      const [startTime, endTime] = (event.time ?? '').split('-').map(t => t.trim());
+      const _when = new Date(`${event.date}T${startTime}`);
+      let _end = null;
+      if (endTime) {
+        _end = new Date(`${event.date}T${endTime}`);
+        if (_end <= _when) _end = new Date(_end.getTime() + 24 * 60 * 60 * 1000); // runs past midnight
+      }
+      return { ...event, _when, _end };
+    });
 
   const upcoming = events
     .filter(e => e._when >= now)
