@@ -1,0 +1,15 @@
+{
+  "socials": [
+    { "id": "instagram", "label": "Instagram", "handle": "@giddygeese_nl", "icon": "fa-brands fa-instagram", "url": "https://www.instagram.com/giddygeese_nl" },
+    { "id": "soundcloud", "label": "SoundCloud", "handle": "giddygeese", "icon": "fa-brands fa-soundcloud", "url": "https://soundcloud.com/giddygeese" },
+    { "id": "twitch", "label": "Twitch", "handle": "giddygeese", "icon": "fa-brands fa-twitch", "url": "https://www.twitch.tv/giddygeese" },
+    { "id": "kick", "label": "Kick", "handle": "giddygeese", "icon": "fa-solid fa-tower-broadcast", "url": "https://kick.com/giddygeese" },
+    { "id": "whatsapp", "label": "WhatsApp Community", "handle": "Join the chat", "icon": "fa-brands fa-whatsapp", "url": "https://chat.whatsapp.com/BtLaogHTbLI51pgoMQ7e1D" },
+    { "id": "linktree", "label": "Linktree", "handle": "giddygeese", "icon": "fa-solid fa-link", "url": "https://linktr.ee/giddygeese" }
+  ],
+  "contact": [
+    { "label": "Bookings & gigs", "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" },
+    { "label": "Want to join?", "text": "Hop in the WhatsApp community", "url": "https://chat.whatsapp.com/BtLaogHTbLI51pgoMQ7e1D" },
+    { "label": "Venues & collabs", "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" }
+  ]
+}

@@ -9,6 +9,27 @@ active: contact
 
 <main>
   <section class="page-section">
-    <p class="placeholder-note">Contact details coming soon.</p>
+    <h2 class="section-title">Follow Us</h2>
+    <div class="social-tiles">
+      {% for s in site.data.socials.socials %}{% if s.url != "" %}
+      <a class="social-tile social-tile--{{ s.id }}" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">
+        <i class="{{ s.icon }}" aria-hidden="true"></i>
+        <span class="social-tile-label">{{ s.label }}</span>
+        {% if s.handle != "" %}<span class="social-tile-handle">{{ s.handle }}</span>{% endif %}
+      </a>
+      {% endif %}{% endfor %}
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2 class="section-title">Get in Touch</h2>
+    <dl class="contact-routes">
+      {% for c in site.data.socials.contact %}
+      <div class="contact-route">
+        <dt>{{ c.label }}</dt>
+        <dd>{% if c.url != "" %}<a href="{{ c.url }}" target="_blank" rel="noopener noreferrer">{{ c.text }}</a>{% else %}{{ c.text }}{% endif %}</dd>
+      </div>
+      {% endfor %}
+    </dl>
   </section>
 </main>

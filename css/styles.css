@@ -627,6 +627,113 @@ a.lineup-tag:hover {
   opacity: 0.85;
 }
 
+/* ─── Contact / Socials ──────────────────────────────────── */
+
+.social-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--social-tile-min-col), 1fr));
+  gap: var(--grid-gap);
+}
+
+.social-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--card-padding);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.social-tile:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+}
+
+.social-tile i {
+  font-size: var(--social-tile-icon-size);
+  color: var(--tile-color, var(--color-text-secondary));
+  margin-bottom: 0.25rem;
+}
+
+.social-tile:hover {
+  border-color: var(--tile-color, var(--color-border-hover));
+}
+
+.social-tile--soundcloud { --tile-color: var(--brand-soundcloud); }
+.social-tile--twitch     { --tile-color: var(--brand-twitch); }
+.social-tile--kick       { --tile-color: var(--brand-kick); }
+.social-tile--whatsapp   { --tile-color: var(--brand-whatsapp); }
+.social-tile--linktree   { --tile-color: var(--brand-linktree); }
+
+/* Instagram's logo is a gradient, so it's painted through the glyph */
+.social-tile--instagram i {
+  background: var(--brand-instagram);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.social-tile--instagram:hover {
+  border-color: var(--brand-instagram-solid);
+}
+
+.social-tile-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.social-tile-handle {
+  color: var(--color-text-secondary);
+  font-size: var(--text-small-size);
+}
+
+.contact-routes {
+  max-width: var(--contact-max-width);
+  margin: 0 auto;
+}
+
+.contact-route {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-route dt {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contact-route dd {
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.contact-route a {
+  color: var(--color-accent);
+}
+
+.contact-route a:hover {
+  color: var(--color-accent-hover);
+}
+
+@media (max-width: 640px) {
+  .contact-route {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact-route dd {
+    text-align: left;
+  }
+}
+
 /* ─── Footer ──────────────────────────────────────────────── */
 
 .site-footer {
@@ -635,4 +742,21 @@ a.lineup-tag:hover {
   color: var(--color-text-secondary);
   font-size: var(--text-small-size);
   border-top: 1px solid var(--color-border);
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--icon-gap);
+  margin-bottom: 1rem;
+}
+
+.footer-socials .social-link {
+  width: var(--icon-size-footer);
+  height: var(--icon-size-footer);
+}
+
+.footer-socials .social-link i {
+  font-size: var(--icon-size-footer);
 }

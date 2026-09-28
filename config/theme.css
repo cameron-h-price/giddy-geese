@@ -75,6 +75,21 @@
   /* --- Social icons --- */
   --icon-size:       2rem;
   --icon-gap:        1.25rem;
+  --icon-size-footer: 1.35rem;
+
+  /* --- Contact / Socials --- */
+  --social-tile-min-col:   170px;
+  --social-tile-icon-size: 2.5rem;
+  --contact-max-width:     640px;
+
+  /* Platform brand colours — used for the Contact / Socials page tiles */
+  --brand-instagram:  linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  --brand-instagram-solid: #d62976;   /* hover border — borders can't take a gradient */
+  --brand-soundcloud: #ff5500;
+  --brand-twitch:     #9146ff;
+  --brand-kick:       #53fc18;
+  --brand-whatsapp:   #25d366;
+  --brand-linktree:   #43e55e;
 
   /* --- Events --- */
   --poster-aspect-ratio: 3 / 4;

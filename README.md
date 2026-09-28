@@ -30,7 +30,6 @@ Each page is a file at the repo root with YAML front matter:
 layout: default
 title: Page Title — GiddyGeese
 active: some-id        # matches an entry in _includes/nav.html for the active nav state
-font_awesome: true      # optional — include Font Awesome (needed for social icons)
 scripts:                # optional — extra <script> tags before </body>
   - /js/some-script.js
 ---
@@ -215,6 +214,15 @@ To use a Google Font, uncomment the `@import` line at the top of `theme.css`, pa
 --icon-size   /* icon size */
 --icon-gap    /* gap between icons */
 ```
+
+---
+
+## Collective socials & contact
+
+The collective's own links live in `_data/socials.json`. They're rendered at build time into the **Contact / Socials** page (`contact.html`) and the social icons in the footer on every page.
+
+- `socials`: one entry per platform (`label`, `handle`, Font Awesome `icon`, `url`). Leave `url` as `""` to hide an entry.
+- `contact`: the "Get in touch" rows (`label`, `text`, optional `url`, e.g. a `mailto:` link).
 
 ---
 
