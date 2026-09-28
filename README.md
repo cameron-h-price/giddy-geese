@@ -149,6 +149,25 @@ Each entry looks like this:
 
 Photos show on the **Gallery** page (`gallery.html`) in file order. Clicking a thumbnail opens it in a lightbox. You can move between photos by clicking, with the arrow keys, or close it with Escape.
 
+### Hero shot
+
+One photo is the collective's hero shot. It shows up in two places: as the wide banner behind the title on the home page, and as a large featured photo above the grid on the Gallery page. To set or swap it:
+
+```
+python _tools/add_photos.py --hero DSC05705-1.jpg --hero-focus 0.55
+```
+
+- `--hero` is the original's path inside `GalleryOriginals/`. The photo is added to the gallery first if it isn't there yet.
+- The home banner is a wide 3:1 strip cut across the full width of the photo. `--hero-focus` picks which strip: 0 is the top of the photo, 1 the bottom, and the default is 0.5. Add `--dry-run` to see which rows it would keep.
+- The script writes `assets/images/hero/hero-2400.jpg` (desktop) and `hero-1200.jpg` (phones, under 800px wide). The filenames never change, so no HTML or CSS edits are needed.
+- It sets `"featured": "<photo id>"` at the top of `data/gallery.json`. Remove that key to drop the big photo from the Gallery page.
+
+Tokens in `config/theme.css`:
+- `--hero-height`: banner height
+- `--hero-overlay`: the darkening gradient that keeps the title readable
+- `--hero-focus`: crop position of the Gallery featured photo
+- `--gallery-featured-aspect`: shape of the Gallery featured photo
+
 ### Switching to albums
 
 Right now the gallery is one flat stream, but album information is already recorded:

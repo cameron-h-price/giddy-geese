@@ -171,6 +171,17 @@ async function init() {
 
   const lightbox = buildLightbox(photos);
 
+  // Hero shot: `featured` holds one photo id; it is shown big above the grid too.
+  const featuredIndex = photos.findIndex((p) => data.featured && p.id === data.featured);
+  if (featuredIndex !== -1) {
+    const featured = buildThumb(photos[featuredIndex], featuredIndex);
+    featured.className = 'gallery-featured';
+    featured.querySelector('img').src = resolveSrc(photos[featuredIndex]);
+    featured.querySelector('img').loading = 'eager';
+    featured.addEventListener('click', () => lightbox.open(featuredIndex));
+    document.getElementById('gallery-featured').appendChild(featured);
+  }
+
   photos.forEach((photo, index) => {
     const thumb = buildThumb(photo, index);
     thumb.addEventListener('click', () => lightbox.open(index));

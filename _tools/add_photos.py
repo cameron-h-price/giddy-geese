@@ -3,6 +3,8 @@ Add new gallery photos from the originals folder to the site.
 
     python _tools/add_photos.py            # process new photos
     python _tools/add_photos.py --dry-run  # show what would happen, write nothing
+    python _tools/add_photos.py --hero DSC05705-1.jpg [--hero-focus 0.55]
+                                           # make that photo the hero shot
 
 Originals live OUTSIDE the repo (default: ../GalleryOriginals, next to
 DJImagesOriginals) so multi-MB phone photos never enter git history. For each
@@ -16,6 +18,13 @@ original not yet in data/gallery.json this script:
 Existing entries are never touched, so hand-edited captions and ordering survive
 re-runs. A photo counts as "already added" when its `source` (path relative to
 the originals folder) is present in gallery.json.
+
+Hero shot: --hero <original> (path inside the originals folder) adds the photo
+if needed, sets `featured` in gallery.json (big photo above the Gallery grid)
+and writes the home page banner: a wide HERO_ASPECT crop to
+assets/images/hero/hero-{2400,1200}.jpg. The filenames are fixed, so swapping the
+hero needs no HTML/CSS change. --hero-focus picks which horizontal band is
+kept: 0 = top of the photo, 1 = bottom, default 0.5.
 
 Albums: a photo inside a subfolder of the originals folder gets that folder's
 name as its `album`; photos at the top level get `album: null`. The site ignores
@@ -44,10 +53,13 @@ DEFAULT_SOURCE = REPO.parent / "GalleryOriginals"
 GALLERY_JSON = REPO / "data" / "gallery.json"
 FULL_DIR = REPO / "assets" / "gallery" / "full"
 THUMB_DIR = REPO / "assets" / "gallery" / "thumbs"
+HERO_DIR = REPO / "assets" / "images" / "hero"
 
 FULL_EDGE = 1600   # px, longest edge of the lightbox copy
 THUMB_EDGE = 600   # px, shortest edge of the thumbnail (grid cells are cropped by CSS)
 JPEG_QUALITY = 82
+HERO_ASPECT = 3.0          # banner width / height
+HERO_WIDTHS = (2400, 1200)  # desktop, phone
 
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"}
 EXIF_IFD = 0x8769
@@ -121,12 +133,38 @@ def process(path, source_root, photo_id, dry_run):
     }
 
 
+def write_hero(path, focus, dry_run):
+    """Crop a full-width HERO_ASPECT band centred at `focus` and save each HERO_WIDTHS size."""
+    with Image.open(path) as img:
+        img = ImageOps.exif_transpose(img)
+        if img.mode != "RGB":
+            img = img.convert("RGB")
+        band_h = min(img.height, round(img.width / HERO_ASPECT))
+        top = round(focus * img.height - band_h / 2)
+        top = max(0, min(top, img.height - band_h))
+        band = img.crop((0, top, img.width, top + band_h))
+
+    for width in HERO_WIDTHS:
+        out = band.resize((width, round(width / band.width * band.height)), Image.LANCZOS) \
+            if width < band.width else band
+        dest = HERO_DIR / f"hero-{width}.jpg"
+        print(f"  * hero {dest.relative_to(REPO).as_posix()} ({out.width}x{out.height}, rows {top}-{top + band_h})")
+        if not dry_run:
+            save_jpeg(out, dest)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE,
                         help=f"originals folder (default: {DEFAULT_SOURCE})")
     parser.add_argument("--dry-run", action="store_true", help="report only, write nothing")
+    parser.add_argument("--hero", metavar="ORIGINAL",
+                        help="original (path inside the originals folder) to use as the hero shot")
+    parser.add_argument("--hero-focus", type=float, default=0.5,
+                        help="vertical centre of the banner crop, 0 = top, 1 = bottom (default 0.5)")
     args = parser.parse_args()
+    if not 0 <= args.hero_focus <= 1:
+        sys.exit("--hero-focus must be between 0 and 1")
 
     source_root = args.source.resolve()
     if not source_root.is_dir():
@@ -145,7 +183,13 @@ def main():
                        if p.is_file() and p.suffix.lower() in IMAGE_EXTS)
     new = [p for p in originals if p.relative_to(source_root).as_posix() not in known_sources]
 
-    if not new:
+    hero_path = None
+    if args.hero:
+        hero_path = (source_root / args.hero).resolve()
+        if not hero_path.is_file():
+            sys.exit(f"Hero photo not found: {hero_path}")
+
+    if not new and not hero_path:
         print(f"No new photos in {source_root} ({len(photos)} already in the gallery).")
         return
 
@@ -170,6 +214,15 @@ def main():
 
     for path, reason in skipped:
         print(f"  ! skipped {path.relative_to(source_root)}: {reason}")
+
+    if hero_path:
+        hero_source = hero_path.relative_to(source_root).as_posix()
+        entry = next((p for p in data["photos"] if p.get("source") == hero_source), None)
+        if entry is None:
+            sys.exit(f"Hero photo {hero_source} could not be added to the gallery (see skipped above).")
+        write_hero(hero_path, args.hero_focus, args.dry_run)
+        data["featured"] = entry["id"]
+        print(f"  * featured = {entry['id']}")
 
     if args.dry_run:
         print(f"Dry run: would add {len(added)} photo(s). Nothing written.")

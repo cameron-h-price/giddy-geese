@@ -102,5 +102,12 @@
   /* --- Gallery --- */
   --gallery-min-col:        220px;
   --gallery-aspect-ratio:   1 / 1;
+  --gallery-featured-aspect: 16 / 9;
+
+  /* --- Hero shot (home banner + Gallery featured photo) ---
+     Images come from `_tools/add_photos.py --hero`; see README. */
+  --hero-height:  clamp(240px, 33.333vw, 480px);  /* banner is pre-cropped to 3:1 */
+  --hero-overlay: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.6));
+  --hero-focus:   center 55%;   /* object-position for the featured gallery photo */
 
 }
