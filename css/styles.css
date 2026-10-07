@@ -804,6 +804,7 @@ a.lineup-tag:hover {
 .social-tile--kick       { --tile-color: var(--brand-kick); }
 .social-tile--whatsapp   { --tile-color: var(--brand-whatsapp); }
 .social-tile--linktree   { --tile-color: var(--brand-linktree); }
+.social-tile--email      { --tile-color: var(--color-accent); }
 
 /* Instagram's logo is a gradient, so it's painted through the glyph */
 .social-tile--instagram i {
@@ -825,6 +826,7 @@ a.lineup-tag:hover {
 .social-tile-handle {
   color: var(--color-text-secondary);
   font-size: var(--text-small-size);
+  overflow-wrap: anywhere;
 }
 
 .contact-routes {

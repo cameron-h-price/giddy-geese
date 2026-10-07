@@ -1,5 +1,6 @@
 {
   "socials": [
+    { "id": "email", "label": "Email", "handle": "GiddyGeeseNL@gmail.com", "icon": "fa-solid fa-envelope", "url": "mailto:GiddyGeeseNL@gmail.com" },
     { "id": "instagram", "label": "Instagram", "handle": "@giddygeese_nl", "icon": "fa-brands fa-instagram", "url": "https://www.instagram.com/giddygeese_nl" },
     { "id": "soundcloud", "label": "SoundCloud", "handle": "giddygeese", "icon": "fa-brands fa-soundcloud", "url": "https://soundcloud.com/giddygeese" },
     { "id": "twitch", "label": "Twitch", "handle": "giddygeese", "icon": "fa-brands fa-twitch", "url": "https://www.twitch.tv/giddygeese" },
@@ -8,8 +9,9 @@
     { "id": "linktree", "label": "Linktree", "handle": "giddygeese", "icon": "fa-solid fa-link", "url": "https://linktr.ee/giddygeese" }
   ],
   "contact": [
-    { "label": "Bookings & gigs", "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" },
+    { "label": "Bookings & gigs", "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com?subject=Booking%20enquiry" },
     { "label": "Want to join?", "text": "Hop in the WhatsApp community", "url": "https://chat.whatsapp.com/BtLaogHTbLI51pgoMQ7e1D" },
-    { "label": "Venues & collabs", "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" }
+    { "label": "Venues & collabs", "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com?subject=Venue%20%2F%20collab" },
+    { "label": "Anything else", "text": "Email us or DM us on Instagram", "url": "mailto:GiddyGeeseNL@gmail.com" }
   ]
 }

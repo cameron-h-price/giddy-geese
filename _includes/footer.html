@@ -1,7 +1,7 @@
 <footer class="site-footer">
   <div class="footer-socials">
     {% for s in site.data.socials.socials %}{% if s.url != "" %}
-    <a class="social-link" href="{{ s.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ s.label }}" title="{{ s.label }}"><i class="{{ s.icon }}"></i></a>
+    <a class="social-link" href="{{ s.url }}"{% unless s.url contains "mailto:" %} target="_blank" rel="noopener noreferrer"{% endunless %} aria-label="{{ s.label }}" title="{{ s.label }}"><i class="{{ s.icon }}"></i></a>
     {% endif %}{% endfor %}
   </div>
   {% if site.data.donate.kofi_url != "" %}
