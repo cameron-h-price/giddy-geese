@@ -4,5 +4,8 @@
     <a class="social-link" href="{{ s.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ s.label }}" title="{{ s.label }}"><i class="{{ s.icon }}"></i></a>
     {% endif %}{% endfor %}
   </div>
+  {% if site.data.donate.kofi_url != "" %}
+  <p class="footer-donate"><a href="{{ '/donate.html' | relative_url }}">Support GiddyGeese</a></p>
+  {% endif %}
   <p>&copy; 2026 GiddyGeese</p>
 </footer>

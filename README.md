@@ -309,6 +309,17 @@ The collective's own links live in `_data/socials.json`. They're rendered at bui
 
 ---
 
+## Donations
+
+The **Donate** page (`donate.html`) reads its link from `_data/donate.json`:
+
+- `kofi_url`: the Ko-fi page link, e.g. `https://ko-fi.com/giddygeese`. While it's `""` the page says "Donations open soon" and the **Donate** nav link and footer link stay hidden.
+- `button_text`: the label on the donate button.
+
+The page text (where the money goes, the small print) is edited directly in `donate.html`.
+
+---
+
 ## Highlighted content (home page)
 
 The third card on the home page embeds an Instagram Reel set in `_data/highlight.json`:

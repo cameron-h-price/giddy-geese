@@ -1,0 +1,35 @@
+---
+layout: default
+title: Donate — GiddyGeese
+active: donate
+---
+<header class="site-header">
+  <h1 class="page-title">Donate</h1>
+</header>
+
+<main>
+  <section class="page-section prose">
+    <p>GiddyGeese is run by volunteers who love bringing people together through music. Most of what we do is free or as cheap as we can make it, and we'd like to keep it that way.</p>
+    <p>If you've enjoyed a meetup, party or stream and want to chip in, every euro helps keep the geese flying.</p>
+
+    <h2>Where the money goes</h2>
+    <ul>
+      <li><strong>Equipment.</strong> Decks, cables, speakers and everything that breaks at the worst moment</li>
+      <li><strong>Venues.</strong> Hire costs and deposits for meetups and parties</li>
+      <li><strong>Events.</strong> Posters, travel and the small costs that add up behind the scenes</li>
+    </ul>
+
+    <h2>How to give</h2>
+    {% if site.data.donate.kofi_url != "" %}
+    <p>Donations go through Ko-fi. You can pay with iDEAL, card, Apple Pay or Google Pay, and leave us a message if you like.</p>
+    <p class="donate-cta">
+      <a class="donate-btn" href="{{ site.data.donate.kofi_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> {{ site.data.donate.button_text }}</a>
+    </p>
+    {% else %}
+    <p class="placeholder-note">Donations open soon.</p>
+    {% endif %}
+
+    <h2>The small print</h2>
+    <p>We're an informal collective, not a registered charity, so donations aren't tax-deductible. You don't get anything in return except our thanks, and we keep a record of what comes in and what it's spent on.</p>
+  </section>
+</main>

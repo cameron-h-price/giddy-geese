@@ -12,6 +12,9 @@
     <li><a href="{{ '/mission.html' | relative_url }}"{% if page.active == 'mission' %} class="active"{% endif %}>Our Mission</a></li>
     {% endcomment %}
     <li><a href="{{ '/conduct.html' | relative_url }}"{% if page.active == 'conduct' %} class="active"{% endif %}>Code of Conduct &amp; Support</a></li>
+    {% if site.data.donate.kofi_url != "" %}
+    <li><a href="{{ '/donate.html' | relative_url }}"{% if page.active == 'donate' %} class="active"{% endif %}>Donate</a></li>
+    {% endif %}
     <li><a href="{{ '/contact.html' | relative_url }}"{% if page.active == 'contact' %} class="active"{% endif %}>Contact / Socials</a></li>
   </ul>
 </nav>

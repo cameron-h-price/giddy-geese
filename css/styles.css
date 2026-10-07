@@ -869,6 +869,38 @@ a.lineup-tag:hover {
   }
 }
 
+/* ─── Donate page ─────────────────────────────────────────── */
+
+.donate-cta {
+  margin: 1.5rem 0;
+}
+
+.donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--color-accent);
+  border-radius: var(--card-radius);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s ease;
+}
+
+.prose a.donate-btn,
+.prose a.donate-btn:hover {
+  color: var(--color-bg);
+}
+
+.donate-btn:hover {
+  background: var(--color-accent-hover);
+}
+
+.prose .placeholder-note {
+  text-align: left;
+}
+
 /* ─── Footer ──────────────────────────────────────────────── */
 
 .site-footer {
@@ -894,4 +926,17 @@ a.lineup-tag:hover {
 
 .footer-socials .social-link i {
   font-size: var(--icon-size-footer);
+}
+
+.footer-donate {
+  margin-bottom: 0.5rem;
+}
+
+.footer-donate a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footer-donate a:hover {
+  color: var(--color-accent-hover);
 }
