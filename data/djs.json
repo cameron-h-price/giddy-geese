@@ -48,5 +48,15 @@
       "socials": {}
     }
   ],
-  "volunteers": []
+  "volunteers": [
+    {
+      "id": "Frank",
+      "name": "Frank",
+      "role": "Photographer",
+      "image": "assets/DJImages/Frank.jpg",
+      "socials": {
+        "instagram": "https://www.instagram.com/frank_wouter/"
+      }
+    }
+  ]
 }

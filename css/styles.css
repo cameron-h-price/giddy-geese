@@ -172,6 +172,12 @@ main {
   margin-top: var(--section-gap);
 }
 
+/* auto-fill, not auto-fit, so a short list keeps DJ-card width
+   instead of stretching across the page */
+.volunteers-section .dj-grid {
+  grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-col), 1fr));
+}
+
 .volunteers-section .placeholder-note a {
   color: var(--color-accent);
 }
