@@ -27,7 +27,15 @@ active: contact
       {% for c in site.data.socials.contact %}
       <div class="contact-route">
         <dt>{{ c.label }}</dt>
-        <dd>{% if c.url != "" %}<a href="{{ c.url }}"{% unless c.url contains "mailto:" %} target="_blank" rel="noopener noreferrer"{% endunless %}>{{ c.text }}</a>{% else %}{{ c.text }}{% endif %}</dd>
+        <dd>
+          {%- if c.links -%}
+            {%- for l in c.links -%}
+              {%- unless forloop.first %} or {% endunless -%}
+              <a href="{{ l.url }}"{% unless l.url contains "mailto:" %} target="_blank" rel="noopener noreferrer"{% endunless %}>{{ l.text }}</a>
+            {%- endfor -%}
+          {%- elsif c.url != "" -%}<a href="{{ c.url }}"{% unless c.url contains "mailto:" %} target="_blank" rel="noopener noreferrer"{% endunless %}>{{ c.text }}</a>
+          {%- else -%}{{ c.text }}{%- endif -%}
+        </dd>
       </div>
       {% endfor %}
     </dl>

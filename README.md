@@ -305,7 +305,7 @@ To use a Google Font, uncomment the `@import` line at the top of `theme.css`, pa
 The collective's own links live in `_data/socials.json`. They're rendered at build time into the **Contact / Socials** page (`contact.html`) and the social icons in the footer on every page.
 
 - `socials`: one entry per platform (`label`, `handle`, Font Awesome `icon`, `url`). Leave `url` as `""` to hide an entry.
-- `contact`: the "Get in touch" rows (`label`, `text`, optional `url`, e.g. a `mailto:` link).
+- `contact`: the "Get in touch" rows (`label`, `text`, optional `url`, e.g. a `mailto:` link). To offer several routes in one row, give it `links` instead: a list of `{ "text", "url" }`, shown separated by "or".
 
 ---
 

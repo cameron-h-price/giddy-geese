@@ -9,9 +9,9 @@
     { "id": "linktree", "label": "Linktree", "handle": "giddygeese", "icon": "fa-solid fa-link", "url": "https://linktr.ee/giddygeese" }
   ],
   "contact": [
-    { "label": "Bookings & gigs", "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com?subject=Booking%20enquiry" },
+    { "label": "Bookings & gigs", "links": [{ "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com?subject=Booking%20enquiry" }, { "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" }] },
     { "label": "Want to join?", "text": "Hop in the WhatsApp community", "url": "https://chat.whatsapp.com/BtLaogHTbLI51pgoMQ7e1D" },
-    { "label": "Venues & collabs", "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com?subject=Venue%20%2F%20collab" },
-    { "label": "Anything else", "text": "Email us or DM us on Instagram", "url": "mailto:GiddyGeeseNL@gmail.com" }
+    { "label": "Venues & collabs", "links": [{ "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com?subject=Venue%20%2F%20collab" }, { "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" }] },
+    { "label": "Anything else", "links": [{ "text": "GiddyGeeseNL@gmail.com", "url": "mailto:GiddyGeeseNL@gmail.com" }, { "text": "DM us on Instagram", "url": "https://www.instagram.com/giddygeese_nl" }] }
   ]
 }
