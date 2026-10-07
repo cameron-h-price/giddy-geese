@@ -4,7 +4,7 @@ Site for the GiddyGeese DJ collective — built with Jekyll. Pages: Home, Upcomi
 
 The **Our Mission** page (`mission.html`) is currently hidden: it has `published: false` in its front matter, so Jekyll doesn't build it, and its nav link is wrapped in `{% comment %}` in `_includes/nav.html`. To bring it back, remove `published: false` and uncomment the nav link.
 
-Live at **https://cameron-h-price.github.io/giddy-geese/**
+Live at **https://giddygeese.nl** (the old `cameron-h-price.github.io/giddy-geese/` address redirects there)
 
 ## Deploying
 
