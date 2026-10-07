@@ -54,6 +54,8 @@
   --page-padding-x:  2rem;
   --page-padding-y:  3rem;
   --section-gap:     3rem;
+  --prose-width:     720px;   /* max line length on text-heavy pages */
+  --prose-line-height: 1.65;
 
   /* --- Nav --- */
   --nav-padding-y:   1.25rem;

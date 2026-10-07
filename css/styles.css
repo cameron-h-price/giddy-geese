@@ -276,6 +276,48 @@ main {
   margin-bottom: var(--grid-gap);
 }
 
+/* ─── Prose (text-heavy pages, e.g. Code of Conduct) ─────── */
+
+.prose {
+  max-width: var(--prose-width);
+  line-height: var(--prose-line-height);
+}
+
+.prose h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-section-title-size);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin: var(--section-gap) 0 0.75rem;
+}
+
+.prose p,
+.prose ul {
+  margin-bottom: 1rem;
+}
+
+.prose ul {
+  padding-left: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+}
+
+.prose li::marker {
+  color: var(--color-accent);
+}
+
+.prose a {
+  color: var(--color-accent);
+}
+
+.prose a:hover {
+  color: var(--color-accent-hover);
+}
+
 /* ─── Feature / link cards (landing page) ────────────────── */
 
 .card-grid {
