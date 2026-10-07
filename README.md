@@ -1,6 +1,6 @@
 # GiddyGeese
 
-Site for the GiddyGeese DJ collective — built with Jekyll. Pages: Home, Upcoming Events, Upcoming Streams, Our DJs (one card per member), Gallery, Code of Conduct & Support, Contact Us.
+Site for the GiddyGeese DJ collective — built with Jekyll. Pages: Home, Upcoming Events, Upcoming Streams, Our DJs & Volunteers (one card per member), Gallery, Code of Conduct & Support, Contact Us.
 
 The **Our Mission** page (`mission.html`) is currently hidden: it has `published: false` in its front matter, so Jekyll doesn't build it, and its nav link is wrapped in `{% comment %}` in `_includes/nav.html`. To bring it back, remove `published: false` and uncomment the nav link.
 
@@ -67,6 +67,28 @@ Drop the photo in `assets/images/` and set `image` to `"assets/images/filename.j
 `soundcloud` · `instagram` · `mixcloud` · `spotify` · `youtube` · `bandcamp` · `facebook` · `twitter` · `tiktok` · `twitch` · `kick` · `website`
 
 Leave a platform out of the `socials` object entirely (or set it to `""`) to hide it.
+
+### Order
+
+Silly Goose is always shown first and Cmun Selecta second. Everyone else is sorted alphabetically. To change who is pinned, edit the `PINNED` list of member `id`s at the top of `js/main.js`.
+
+---
+
+## Adding a volunteer
+
+Volunteers and community supporters are shown in their own section at the bottom of the **Our DJs & Volunteers** page. Add an entry to the `volunteers` array in `data/djs.json`. It uses the same fields as a DJ, plus an optional `role` shown under the name:
+
+```json
+{
+  "id": "their-name",
+  "name": "Their Name",
+  "role": "Door & welcome",
+  "image": "assets/images/their-name.jpg",
+  "socials": {}
+}
+```
+
+Volunteers are shown in file order, not sorted. While the list is empty, the section only shows its "Want to get involved?" call-out.
 
 ---
 

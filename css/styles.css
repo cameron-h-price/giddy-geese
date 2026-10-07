@@ -158,6 +158,24 @@ main {
   letter-spacing: 0.02em;
 }
 
+/* Role (volunteers) */
+
+.dj-role {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+}
+
+/* Volunteers section (Our DJs page) */
+
+.volunteers-section {
+  margin-top: var(--section-gap);
+}
+
+.volunteers-section .placeholder-note a {
+  color: var(--color-accent);
+}
+
 /* Social links */
 
 .dj-socials {

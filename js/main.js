@@ -29,6 +29,11 @@ const PLACEHOLDER_AVATAR = `data:image/svg+xml,${encodeURIComponent(
   </svg>`
 )}`;
 
+/*
+ * Member ids pinned to the front of the DJ grid, in this order.
+ */
+const PINNED = ['SillyGoose', 'cmun-selecta'];
+
 function resolveImage(member) {
   return member.image?.trim() || PLACEHOLDER_AVATAR;
 }
@@ -51,6 +56,14 @@ function buildCard(member) {
   nameEl.className   = 'dj-name';
   nameEl.textContent = member.name;
   card.appendChild(nameEl);
+
+  // Role (optional, mainly for volunteers)
+  if (member.role?.trim()) {
+    const roleEl = document.createElement('p');
+    roleEl.className   = 'dj-role';
+    roleEl.textContent = member.role;
+    card.appendChild(roleEl);
+  }
 
   // Social links
   const activeSocials = Object.entries(member.socials ?? {})
@@ -123,22 +136,29 @@ async function init() {
   if (taglineEl) taglineEl.textContent = data.collective.tagline ?? '';
 
   // Filter out members with no name (incomplete placeholder entries)
-  // Silly Goose is pinned first; remaining members sorted alphabetically
+  // Pinned members come first in PINNED order; the rest are sorted alphabetically
+  const pinRank = m => {
+    const i = PINNED.indexOf(m.id);
+    return i === -1 ? PINNED.length : i;
+  };
   const members = (data.members ?? [])
     .filter(m => m.name?.trim())
-    .sort((a, b) => {
-      if (a.id === 'SillyGoose') return -1;
-      if (b.id === 'SillyGoose') return  1;
-      return a.name.localeCompare(b.name);
-    });
+    .sort((a, b) => pinRank(a) - pinRank(b) || a.name.localeCompare(b.name));
 
   if (members.length === 0) {
     showMessage(grid, 'No members found. Add entries to data/djs.json.');
-    return;
   }
 
   for (const member of members) {
     grid.appendChild(buildCard(member));
+  }
+
+  // Volunteers & community support: shown in file order. When the list is
+  // empty, only the call-out in djs.html shows.
+  const volunteerGrid = document.getElementById('volunteer-grid');
+  const volunteers = (data.volunteers ?? []).filter(v => v.name?.trim());
+  for (const volunteer of volunteers) {
+    volunteerGrid.appendChild(buildCard(volunteer));
   }
 }
 
