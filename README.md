@@ -105,7 +105,7 @@ Edit `data/events.json`. Add an entry to the `events` array:
   "duration": 6,
   "location": "Venue, City",
   "description": "One or two sentence description.",
-  "lineup": ["CmunSelecta", "Silly Goose", "Guest DJ"]
+  "lineup": ["Cmun Selecta", "Silly Goose", "Guest DJ"]
 }
 ```
 
