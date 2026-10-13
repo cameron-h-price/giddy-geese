@@ -46,6 +46,14 @@
       "name": "Madstew",
       "image": "assets/DJImages/Madstew.jpg",
       "socials": {}
+    },
+    {
+      "id": "MrB",
+      "name": "Mr. B",
+      "image": "assets/DJImages/MrB.jpg",
+      "socials": {
+        "instagram": "https://www.instagram.com/mr.b_dnb/"
+      }
     }
   ],
   "volunteers": [
