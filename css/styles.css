@@ -946,3 +946,16 @@ a.lineup-tag:hover {
 /* Plain-HTML copies of JS-rendered content, for crawlers that don't run JS.
    Hidden as soon as JS runs (the layout adds .js to <html>). */
 .js .static-fallback { display: none; }
+
+/* Stream cards: the concept text box under the day/time line */
+.stream-concept {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  padding: 1rem 1.15rem;
+  margin: 0.25rem 0 0.5rem;
+  color: var(--color-text-primary);
+  line-height: 1.55;
+}
+.stream-concept p { margin: 0; }
+.stream-concept p + p { margin-top: 0.6rem; }

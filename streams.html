@@ -20,4 +20,17 @@ scripts:
     <p class="placeholder-note">Usual start times — subject to change, check our socials for the latest.</p>
     <div id="stream-grid" class="card-grid"></div>
   </section>
+
+  {%- comment -%} Plain-HTML copy for crawlers that don't run JS. Hidden once JS runs. {%- endcomment %}
+  <section class="page-section static-fallback">
+    <ul>
+      {%- for st in site.data.streams.streams %}
+      <li>
+        <h3>{{ st.title }}</h3>
+        <p>Every {{ st.day }} at {{ st.time }}{% if st.platform %} on {{ st.platform }}{% endif %}</p>
+        {%- if st.description and st.description != "" %}<p>{{ st.description | newline_to_br }}</p>{% endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
 </main>

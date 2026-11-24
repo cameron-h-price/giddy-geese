@@ -26,6 +26,18 @@ function buildStreamCard(stream, platformLookup) {
   meta.textContent = `Every ${stream.day} · ${stream.time}`;
   card.appendChild(meta);
 
+  // Concept text box — blank lines in "description" start a new paragraph
+  if (stream.description?.trim()) {
+    const box = document.createElement('div');
+    box.className = 'stream-concept';
+    for (const para of stream.description.split(/\n\s*\n/)) {
+      const p = document.createElement('p');
+      p.textContent = para.trim();
+      box.appendChild(p);
+    }
+    card.appendChild(box);
+  }
+
   const platform = platformLookup.get(stream.platform);
   if (platform) {
     card.appendChild(buildPlatformLink(platform));

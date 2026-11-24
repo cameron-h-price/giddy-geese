@@ -233,6 +233,10 @@ Edit `data/streams.json`. It has two lists:
 
 `platform` (optional) must exactly match a `label` in the `platforms` list above — the matching link/icon is shown on the card. Omit it if the stream doesn't need its own link (the general `platforms` section at the top already covers "where to watch" by default).
 
+`description` (optional) is the concept text, shown in a box on the card under the day and time. Leave a blank line (`
+
+` in the JSON) to start a new paragraph. Leave it `""` to hide the box.
+
 `poster` (optional) is a poster image for the card, same convention as event posters. If omitted or the file fails to load, a placeholder is shown instead.
 
 Unlike events, there's no hero/past-event logic here — every entry in `streams` just renders as its own card, in file order.
