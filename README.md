@@ -351,4 +351,4 @@ All data files live in `data/` (`_config.yml` sets `data_dir: data`). Jekyll rea
 - **`llms.txt`**: a markdown summary for AI crawlers.
 - **Meta/OG tags** via `jekyll-seo-tag` (each page's `description:` front matter, else the site description in `_config.yml`), plus `sitemap.xml` via `jekyll-sitemap`, plus `robots.txt`.
 
-Give any new page a one-sentence `description:` in its front matter.
+Give any new page a one-sentence `description:` in its front matter, **in double quotes** (a bare colon in the text breaks the front matter and the page loses its layout).
