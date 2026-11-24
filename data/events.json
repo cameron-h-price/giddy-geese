@@ -27,6 +27,15 @@
       "location": "Sectie-C, Eindhoven",
       "description": "As part of Dutch Design Week, we're teaming up with Gloeiwormen to soundtrack their Groeipijn (Growing Pains) exhibition at Sectie-C. Expect a journey through how electronic music has changed and developed over the decades.",
       "lineup": ["Silly Goose", "T-Shirt Guy", "Cmun Selecta", "Beat Junky", "Rinax", "Mr. B"]
+    },
+    {
+      "name": "GiddyGeese Christmas Party",
+      "poster": "",
+      "date": "2026-12-12",
+      "time": "22:00-04:00",
+      "location": "Tante Toos, Stratumseind, Eindhoven",
+      "description": "Christmas Party in a Locker Room. Join us on December 12 at Tante Toos on Stratumseind in Eindhoven, from 10PM until 4AM. Be there!",
+      "lineup": []
     }
   ]
 }
