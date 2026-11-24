@@ -942,3 +942,7 @@ a.lineup-tag:hover {
 .footer-donate a:hover {
   color: var(--color-accent-hover);
 }
+
+/* Plain-HTML copies of JS-rendered content, for crawlers that don't run JS.
+   Hidden as soon as JS runs (the layout adds .js to <html>). */
+.js .static-fallback { display: none; }

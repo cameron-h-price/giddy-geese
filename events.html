@@ -2,6 +2,7 @@
 layout: default
 title: Upcoming Events — GiddyGeese
 active: events
+description: Upcoming and past GiddyGeese drum & bass and breakbeat events, parties and radio sessions in Eindhoven and Maastricht.
 scripts:
   - /js/event-times.js
   - /js/events.js
@@ -23,5 +24,21 @@ scripts:
   <section class="page-section" id="past-events-section" hidden>
     <h2 class="section-title">Past Events</h2>
     <div id="past-event-grid" class="card-grid event-card-grid"></div>
+  </section>
+
+  {%- comment -%} Plain-HTML list for search engines / AI crawlers that don't run JS. Hidden once JS runs. {%- endcomment %}
+  <section class="page-section static-fallback">
+    <h2 class="section-title">All Events</h2>
+    {%- assign events = site.data.events.events | where_exp: "e", "e.hidden != true" | sort: "date" | reverse %}
+    <ul>
+      {%- for e in events %}
+      <li>
+        <h3>{{ e.name }}</h3>
+        <p>{{ e.date | date: "%A %-d %B %Y" }}, {{ e.time }} · {{ e.location }}</p>
+        {%- if e.description and e.description != "" %}<p>{{ e.description }}</p>{% endif %}
+        {%- if e.lineup.size > 0 %}<p>Line-up: {{ e.lineup | join: ", " }}</p>{% endif %}
+      </li>
+      {%- endfor %}
+    </ul>
   </section>
 </main>

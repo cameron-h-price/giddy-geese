@@ -1,0 +1,25 @@
+---
+layout: null
+sitemap: false
+---
+# {{ site.title }}
+
+> {{ site.description }}
+
+Website: {{ site.url }}/
+
+## Events
+{% assign events = site.data.events.events | where_exp: "e", "e.hidden != true" | sort: "date" | reverse -%}
+{% for e in events -%}
+- {{ e.date }} {{ e.time }}: **{{ e.name }}** at {{ e.location }}{% if e.lineup.size > 0 %}. Line-up: {{ e.lineup | join: ", " }}{% endif %}
+{% endfor %}
+Full list: {{ "/events.html" | absolute_url }}
+
+## DJs
+{% for m in site.data.djs.members -%}
+- {{ m.name }}{% for pair in m.socials %}{% if pair[1] != "" %} · {{ pair[1] }}{% endif %}{% endfor %}
+{% endfor %}
+## Links
+{% for s in site.data.socials.socials -%}{% if s.url != "" and s.id != "whatsapp" -%}
+- {{ s.label }}: {{ s.url }}
+{% endif %}{%- endfor %}

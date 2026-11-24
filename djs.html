@@ -2,6 +2,7 @@
 layout: default
 title: Our DJs &amp; Volunteers — GiddyGeese
 active: djs
+description: Meet the DJs and volunteers of GiddyGeese, a drum & bass and breakbeat DJ collective in the Netherlands.
 scripts:
   - /js/main.js
 ---
@@ -20,5 +21,23 @@ scripts:
     <h2 class="section-title">Volunteers &amp; Community Support</h2>
     <p class="placeholder-note">Our events run on the people who help set up, look after the door, take photos and keep everyone safe. Want to get involved? <a href="{{ '/contact.html' | relative_url }}">Get in touch</a>.</p>
     <div id="volunteer-grid" class="dj-grid"></div>
+  </section>
+
+  {%- comment -%} Plain-HTML list for search engines / AI crawlers that don't run JS. Hidden once JS runs. {%- endcomment %}
+  <section class="page-section static-fallback">
+    <h2 class="section-title">GiddyGeese DJs</h2>
+    <ul>
+      {%- for m in site.data.djs.members %}
+      <li id="static-{{ m.id }}"><strong>{{ m.name }}</strong>{% for pair in m.socials %}{% if pair[1] != "" %} · <a href="{{ pair[1] }}">{{ pair[0] | capitalize }}</a>{% endif %}{% endfor %}</li>
+      {%- endfor %}
+    </ul>
+    {%- if site.data.djs.volunteers.size > 0 %}
+    <h2 class="section-title">Volunteers</h2>
+    <ul>
+      {%- for v in site.data.djs.volunteers %}
+      <li><strong>{{ v.name }}</strong>{% if v.role %} ({{ v.role }}){% endif %}</li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
   </section>
 </main>

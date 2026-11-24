@@ -302,7 +302,7 @@ To use a Google Font, uncomment the `@import` line at the top of `theme.css`, pa
 
 ## Collective socials & contact
 
-The collective's own links live in `_data/socials.json`. They're rendered at build time into the **Contact / Socials** page (`contact.html`) and the social icons in the footer on every page.
+The collective's own links live in `data/socials.json`. They're rendered at build time into the **Contact / Socials** page (`contact.html`) and the social icons in the footer on every page.
 
 - `socials`: one entry per platform (`label`, `handle`, Font Awesome `icon`, `url`). Leave `url` as `""` to hide an entry.
 - `contact`: the "Get in touch" rows (`label`, `text`, optional `url`, e.g. a `mailto:` link). To offer several routes in one row, give it `links` instead: a list of `{ "text", "url" }`, shown separated by "or".
@@ -311,7 +311,7 @@ The collective's own links live in `_data/socials.json`. They're rendered at bui
 
 ## Donations
 
-The **Donate** page (`donate.html`) reads its link from `_data/donate.json`:
+The **Donate** page (`donate.html`) reads its link from `data/donate.json`:
 
 - `kofi_url`: the Ko-fi page link, e.g. `https://ko-fi.com/giddygeese`. While it's `""` the page says "Donations open soon" and the **Donate** nav link and footer link stay hidden.
 - `button_text`: the label on the donate button.
@@ -322,7 +322,7 @@ The page text (where the money goes, the small print) is edited directly in `don
 
 ## Highlighted content (home page)
 
-The third card on the home page embeds an Instagram Reel set in `_data/highlight.json`:
+The third card on the home page embeds an Instagram Reel set in `data/highlight.json`:
 
 - `instagram_url`: the reel or post link. You can strip anything after the `?`, e.g. `https://www.instagram.com/reel/XXXX/`. Leave it as `""` to show a "Coming soon" card instead.
 - `title` / `text`: an optional headline and line of text above the reel. Leave them as `""` to hide them.
@@ -341,3 +341,14 @@ The `collective` block at the top of `djs.json` controls the header on the **Our
 }
 ```
 
+
+## Search engines and AI (SEO)
+
+All data files live in `data/` (`_config.yml` sets `data_dir: data`). Jekyll reads them at build time as `site.data.*`, and they're still published as JSON for the page scripts. One edit to `data/events.json` or `data/djs.json` updates all of these:
+
+- **schema.org JSON-LD** (`_includes/schema-org.html`): the collective as a `MusicGroup` on every page, plus a `MusicEvent` per event on the home and events pages. Google event results and AI assistants read this.
+- **Static fallbacks**: a plain-HTML event list on `events.html` and a DJ list on `djs.html` (`.static-fallback`). Crawlers that don't run JS see real content. The layout adds a `js` class to `<html>` as soon as JS runs, which hides them for visitors.
+- **`llms.txt`**: a markdown summary for AI crawlers.
+- **Meta/OG tags** via `jekyll-seo-tag` (each page's `description:` front matter, else the site description in `_config.yml`), plus `sitemap.xml` via `jekyll-sitemap`, plus `robots.txt`.
+
+Give any new page a one-sentence `description:` in its front matter.

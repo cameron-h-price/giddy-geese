@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
+  <!-- Hide the crawler-readable static fallbacks once JS is running -->
+  <script>document.documentElement.classList.add('js');</script>
+  {% seo title=false %}
+  {% include schema-org.html %}
   <link rel="icon" type="image/jpeg" href="{{ '/assets/logo.jpg' | relative_url }}">
 
   <!-- Font Awesome — social platform icons -->

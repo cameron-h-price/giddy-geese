@@ -1,0 +1,85 @@
+{%- comment -%}
+  schema.org structured data, built from data/*.json at build time.
+  Search engines and AI assistants read this without running any JS.
+  The collective (MusicGroup) goes on every page; events go on the home and events pages.
+{%- endcomment -%}
+{%- assign org_id = site.url | append: "/#giddygeese" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "@id": {{ org_id | jsonify }},
+  "name": {{ site.title | jsonify }},
+  "url": {{ site.url | append: "/" | jsonify }},
+  "logo": {{ site.logo | absolute_url | jsonify }},
+  "image": {{ site.logo | absolute_url | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "genre": ["Drum and Bass", "Breakbeat"],
+  "foundingLocation": {"@type": "Place", "name": "Netherlands"},
+  "sameAs": [
+    {%- assign first = true -%}
+    {%- for s in site.data.socials.socials -%}
+      {%- if s.url != "" and s.url contains "http" -%}
+        {%- unless first %},{% endunless %}
+    {{ s.url | jsonify }}
+        {%- assign first = false -%}
+      {%- endif -%}
+    {%- endfor %}
+  ],
+  "member": [
+    {%- for m in site.data.djs.members %}
+    {
+      "@type": "Person",
+      "name": {{ m.name | jsonify }},
+      "url": {{ "/djs.html#" | append: m.id | absolute_url | jsonify }}
+      {%- assign links = "" | split: "" -%}
+      {%- for pair in m.socials -%}{%- if pair[1] != "" -%}{%- assign links = links | push: pair[1] -%}{%- endif -%}{%- endfor -%}
+      {%- if links.size > 0 %},
+      "sameAs": {{ links | jsonify }}
+      {%- endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- if page.url == "/" or page.url == "/index.html" or page.url == "/events.html" %}
+{%- assign events = site.data.events.events | where_exp: "e", "e.hidden != true" | sort: "date" -%}
+{%- if events.size > 0 %}
+<script type="application/ld+json">
+[
+  {%- for e in events %}
+  {%- assign times = e.time | split: "-" -%}
+  {%- assign start = times[0] | strip -%}
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicEvent",
+    "name": {{ e.name | jsonify }},
+    "startDate": {{ e.date | append: "T" | append: start | jsonify }},
+    {%- if times.size > 1 %}
+    {%- assign end = times[1] | strip -%}
+    {%- assign end_date = e.date -%}
+    {%- if end < start -%}{%- assign end_date = e.date | date: "%s" | plus: 86400 | date: "%Y-%m-%d" -%}{%- endif %}
+    "endDate": {{ end_date | append: "T" | append: end | jsonify }},
+    {%- endif %}
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {"@type": "Place", "name": {{ e.location | jsonify }}, "address": {{ e.location | jsonify }}},
+    {%- if e.poster and e.poster != "" %}
+    "image": {{ "/" | append: e.poster | uri_escape | absolute_url | jsonify }},
+    {%- endif %}
+    {%- if e.description and e.description != "" %}
+    "description": {{ e.description | jsonify }},
+    {%- endif %}
+    "url": {{ "/events.html" | absolute_url | jsonify }},
+    "organizer": {"@id": {{ org_id | jsonify }}},
+    "performer": [
+      {%- for name in e.lineup %}
+      {"@type": "Person", "name": {{ name | jsonify }}}{% unless forloop.last %},{% endunless %}
+      {%- endfor %}
+    ]
+  }{% unless forloop.last %},{% endunless %}
+  {%- endfor %}
+]
+</script>
+{%- endif %}
+{%- endif %}

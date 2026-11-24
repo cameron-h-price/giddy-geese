@@ -1,5 +1,19 @@
 title: GiddyGeese
-description: A DJ collective.
+description: >-
+  GiddyGeese is a drum & bass and breakbeat DJ collective in the Netherlands,
+  hosting parties, radio sessions and live streams in Eindhoven and Maastricht.
+url: https://giddygeese.nl
+logo: /assets/logo.jpg
+lang: en
+
+# All site data (events, DJs, socials, donate, highlight) lives in data/.
+# Jekyll reads it at build time (site.data.events etc.) for the static
+# fallbacks and schema.org markup, and still publishes the JSON for the JS.
+data_dir: data
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 exclude:
   - README.md
