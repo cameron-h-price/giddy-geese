@@ -233,7 +233,7 @@ Edit `data/streams.json`. It has two lists:
 
 `platform` (optional) must exactly match a `label` in the `platforms` list above — the matching link/icon is shown on the card. Omit it if the stream doesn't need its own link (the general `platforms` section at the top already covers "where to watch" by default).
 
-`description` (optional) is the concept text, shown in a box on the card under the day and time. Leave a blank line (`
+`description` (optional, **ANTOINE: yours to write, see `ANTOINE-TODO.md`**) is the concept text, shown in a box on the card under the day and time. Leave a blank line (`
 
 ` in the JSON) to start a new paragraph. Leave it `""` to hide the box.
 

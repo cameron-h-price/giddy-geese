@@ -10,7 +10,8 @@
       "day": "Monday",
       "time": "20:00",
       "platform": "Kick",
-      "description": "",
+      "description": "A weekly house music stream to start the week, live on Kick every Monday night.",
+      "_todo_antoine": "ANTOINE: placeholder line by Cameron. Replace 'description' with 1-3 sentences on the concept (what a host train is, who plays, how to get involved). See ANTOINE-TODO.md.",
       "poster": "assets/images/VertPoster.jpg"
     },
     {
@@ -18,7 +19,8 @@
       "day": "Thursday",
       "time": "19:00",
       "platform": "Noderunners Radio",
-      "description": "",
+      "description": "Our weekly radio show, live on Noderunners Radio every Thursday evening.",
+      "_todo_antoine": "ANTOINE: placeholder line by Cameron. Replace 'description' with 1-3 sentences on the concept (what the 'treasure' is, what to expect). See ANTOINE-TODO.md.",
       "poster": "assets/images/TreasureThursdaysPoster.png"
     }
   ]
