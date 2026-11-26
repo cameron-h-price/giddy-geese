@@ -32,10 +32,10 @@
       "name": "GiddyGeese Christmas Party",
       "poster": "assets/EventPosters/ChristmasParty/Poster_Minimal.png",
       "date": "2026-12-12",
-      "time": "22:00-04:00",
+      "time": "21:00-03:00",
       "location": "Tante Toos, Stratumseind, Eindhoven",
-      "description": "Christmas Party in a Locker Room. Join us on December 12 at Tante Toos on Stratumseind in Eindhoven, from 10PM until 4AM. Be there!",
-      "lineup": []
+      "description": "Christmas Party in a Locker Room. Join us on December 12 at Tante Toos on Stratumseind in Eindhoven, from 9PM until 3AM. Be there!",
+      "lineup": ["Casanova", "Rinax", "Madstew", "Cmun Selecta", "Silly Goose", "Short K1ng"]
     }
   ]
 }
